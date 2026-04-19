@@ -33,28 +33,151 @@
   <meta name="geo.position" content="-12.0464;-77.0428" />
   <meta name="ICBM" content="-12.0464, -77.0428" />
 
-  <!-- ── Schema.org ────────────────────────────────────────── -->
+  <!-- ── Performance / UX meta ────────────────────────────── -->
+  <meta name="theme-color" content="#FF4500" />
+  <meta name="rating" content="general" />
+  <meta name="revisit-after" content="7 days" />
+  <link rel="icon" type="image/png" href="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/684763244a4bec8ffba357d9_log-dark.avif" />
+  <link rel="apple-touch-icon" href="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/684763244a4bec8ffba357d9_log-dark.avif" />
+
+  <!-- ── Resource hints ───────────────────────────────────── -->
+  <link rel="preconnect" href="https://cdn.prod.website-files.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="dns-prefetch" href="https://ajax.googleapis.com" />
+  <link rel="dns-prefetch" href="https://formsubmit.co" />
+
+  <!-- ── Schema.org: MarketingAgency ──────────────────────── -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "MarketingAgency",
-    "@id": "https://flamacreators.com",
+    "@id": "https://flamacreators.com/#organization",
     "name": "Flama Creators",
+    "legalName": "Flama Creators",
     "description": "Agencia de marketing digital en Lima, Perú. Especializados en manejo de redes sociales, branding, diseño web, creación de contenido audiovisual y publicidad digital.",
     "url": "https://flamacreators.com",
-    "logo": "https://cdn.prod.website-files.com/6847525e1086a65748478e1f/684763244a4bec8ffba357d9_log-dark.avif",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cdn.prod.website-files.com/6847525e1086a65748478e1f/684763244a4bec8ffba357d9_log-dark.avif",
+      "width": 400,
+      "height": 120
+    },
     "image": "https://cdn.prod.website-files.com/6847525e1086a65748478e1f/684763244a4bec8ffba357d9_log-dark.avif",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Lima",
       "addressRegion": "Lima",
-      "addressCountry": "PE"
+      "addressCountry": "PE",
+      "addressCountryFull": "Perú"
     },
-    "areaServed": [{"@type": "City", "name": "Lima"}, {"@type": "Country", "name": "Perú"}],
-    "knowsAbout": ["Marketing Digital", "Redes Sociales", "Branding", "Diseño Web", "Producción Audiovisual", "Publicidad Digital"],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "gerencia@flamacreators.com",
+      "availableLanguage": ["Spanish", "English"],
+      "areaServed": "PE"
+    },
+    "telephone": "+51900972068",
+    "email": "gerencia@flamacreators.com",
+    "areaServed": [
+      {"@type": "City", "name": "Lima"},
+      {"@type": "Country", "name": "Perú"}
+    ],
+    "knowsAbout": [
+      "Marketing Digital",
+      "Gestión de Redes Sociales",
+      "Community Management",
+      "Branding",
+      "Identidad Corporativa",
+      "Diseño Web",
+      "Producción Audiovisual",
+      "Publicidad Digital",
+      "Meta Ads",
+      "Google Ads",
+      "Contenido para Instagram",
+      "TikTok Marketing",
+      "SEO"
+    ],
     "foundingDate": "2020",
+    "numberOfEmployees": {"@type": "QuantitativeValue", "minValue": 5, "maxValue": 20},
     "priceRange": "$$",
-    "sameAs": ["https://www.instagram.com/flamacreators", "https://www.linkedin.com/company/flamacreators"]
+    "currenciesAccepted": "PEN, USD",
+    "paymentAccepted": "Transferencia bancaria, Efectivo",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios de Marketing Digital",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Community Management", "description": "Gestión profesional de redes sociales: contenido, interacción y crecimiento orgánico."}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Meta Ads & Google Ads", "description": "Campañas de publicidad digital en Facebook, Instagram y Google con foco en ROAS."}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Producción Audiovisual", "description": "Videos, reels, spots y contenido audiovisual para redes y plataformas digitales."}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Branding & Diseño", "description": "Identidad de marca, logotipo, manual de marca y diseño gráfico."}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Diseño Web", "description": "Sitios web modernos, rápidos y optimizados para conversión."}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Estrategia Digital", "description": "Consultoría y planificación estratégica de marketing digital 360°."}}
+      ]
+    },
+    "sameAs": [
+      "https://www.instagram.com/flamacreators",
+      "https://www.instagram.com/flama.creators",
+      "https://www.facebook.com/flamacreators",
+      "https://www.tiktok.com/@flamacreators",
+      "https://www.linkedin.com/company/flama-creators"
+    ]
+  }
+  </script>
+
+  <!-- ── Schema.org: FAQPage ──────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuánto cuesta contratar Flama Creators?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Los precios varían según servicio. Tenemos paquetes desde community management y Meta Ads hasta producción audiovisual completa. Contáctanos para una propuesta sin costo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿En qué se diferencia Flama de otras agencias de marketing digital en Lima?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Combinamos creatividad de alto impacto con estrategia basada en datos. Equipo in-house: filmmakers, diseñadores, estrategas y media buyers bajo un mismo techo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Trabajan con pymes y startups en Lima?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Trabajamos con marcas de todos los tamaños, desde startups hasta corporativos. Adaptamos estrategia y presupuesto a tus objetivos reales."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Hacen videos y reels para redes sociales?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Es uno de nuestros fuertes. Equipo propio de producción audiovisual especializado en Instagram Reels, TikTok y YouTube. Más de 600 videos producidos."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ── Schema.org: WebSite (Sitelinks searchbox) ─────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://flamacreators.com/#website",
+    "url": "https://flamacreators.com",
+    "name": "Flama Creators",
+    "description": "Agencia de marketing digital en Lima, Perú",
+    "publisher": {"@id": "https://flamacreators.com/#organization"},
+    "inLanguage": "es-PE"
   }
   </script>
 
@@ -1454,7 +1577,7 @@ details[open] .faq-q::after{transform:translateY(-50%) rotate(45deg)}
           <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
         </svg>
       </a>
-      <a href="mailto:gerencia@flamacreators.com.pe" class="fn-social" aria-label="Email">
+      <a href="mailto:gerencia@flamacreators.com" class="fn-social" aria-label="Email">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
         </svg>
@@ -2568,7 +2691,7 @@ details[open] .faq-q::after{transform:translateY(-50%) rotate(45deg)}
 
   </div>
 </section>
-<section id="Form" id="contact-faq" style="background:#0D0D0D;padding:72px 0 80px">
+<a id="faq" aria-hidden="true" tabindex="-1" style="position:absolute;margin-top:-80px;display:block"></a><section id="Form" style="background:#0D0D0D;padding:72px 0 80px">
 <div class="cf-wrap">
 
   <!-- LEFT: CTA + contacts + mini FAQ -->
@@ -2607,11 +2730,16 @@ details[open] .faq-q::after{transform:translateY(-50%) rotate(45deg)}
   <div class="cf-right">
     <div class="cf-form-card">
       <p class="cf-form-title">Cuéntanos tu proyecto</p>
-      <form method="post" action="https://formsubmit.co/gerencia@flamacreators.com" id="email-form" onsubmit="document.getElementById('cf-success').style.display='block';this.style.display='none'">
-        <input type="hidden" name="_subject" value="Nuevo contacto desde flamacreators.com"/>
-        <input type="hidden" name="_template" value="table"/>
+      <form method="post" action="https://formsubmit.co/gerencia@flamacreators.com" id="email-form">
+        <!-- FormSubmit configuration -->
+        <input type="hidden" name="_subject" value="🔥 Nuevo contacto desde flamacreators.com"/>
+        <input type="hidden" name="_template" value="box"/>
         <input type="hidden" name="_captcha" value="false"/>
         <input type="hidden" name="_next" value="https://flamacreators.com/#Form"/>
+        <input type="hidden" name="_autoresponse" value="¡Hola! Recibimos tu mensaje. El equipo de Flama Creators te responderá en menos de 24 horas. Mientras tanto, síguenos en @flamacreators 🔥"/>
+        <input type="hidden" name="_replyto" id="_replyto_field" value=""/>
+        <!-- Honeypot anti-spam -->
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"/>
         <div class="cf-form-row">
           <div><label for="name" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden">Nombre</label><input class="input cf-input" name="name" placeholder="Nombre *" type="text" id="name" required autocomplete="name" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px 16px;font-family:DM Sans,sans-serif;font-size:15px;color:#fff;outline:none;transition:border-color .2s"/></div>
           <div><label for="email" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden">Email</label><input class="input cf-input" name="email" placeholder="Email *" type="email" id="email" required autocomplete="email" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px 16px;font-family:DM Sans,sans-serif;font-size:15px;color:#fff;outline:none;transition:border-color .2s"/></div>
@@ -2621,13 +2749,14 @@ details[open] .faq-q::after{transform:translateY(-50%) rotate(45deg)}
           <div><label for="subject" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden">Asunto</label><input class="input cf-input" name="subject" placeholder="Servicio de interés *" type="text" id="subject" required style="width:100%;box-sizing:border-box;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px 16px;font-family:DM Sans,sans-serif;font-size:15px;color:#fff;outline:none;transition:border-color .2s"/></div>
         </div>
         <div class="cf-form-single"><label for="message" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden">Mensaje</label><textarea id="message" name="message" maxlength="5000" placeholder="¿Cómo podemos ayudarte?" required class="input cf-input" rows="4" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px 16px;font-family:DM Sans,sans-serif;font-size:15px;color:#fff;outline:none;transition:border-color .2s;resize:vertical"></textarea></div>
-        <button type="submit" class="cf-submit">Enviar mensaje →</button>
+        <button type="submit" class="cf-submit" id="cf-submit-btn">Enviar mensaje →</button>
+        <div id="cf-error" style="display:none;color:#ff6b6b;font-size:14px;margin-top:8px;text-align:center">Hubo un error. Por favor escríbenos a <a href="mailto:gerencia@flamacreators.com" style="color:#FF4500">gerencia@flamacreators.com</a></div>
         <div class="cf-checkbox-wrap">
           <input type="checkbox" name="checkbox" id="cf-checkbox" required/>
           <span>Acepto que mis datos sean recopilados y almacenados para gestionar mi solicitud.</span>
         </div>
       </form>
-      <div id="cf-success" class="cf-form-success">¡Mensaje enviado! Te responderemos en menos de 24h.</div>
+      <div id="cf-success" style="display:none" class="cf-form-success">🔥 ¡Mensaje enviado! Te responderemos en menos de 24h.</div>
     </div>
   </div>
 
@@ -3135,6 +3264,44 @@ $(".slider-main_component").each(function (index) {
       img.onerror = function() {};
       img.src = thumb;
     });
+  });
+})();
+
+/* ── Form: sync _replyto + async submit with feedback ── */
+(function() {
+  var emailInput = document.getElementById('email');
+  var replytoField = document.getElementById('_replyto_field');
+  if (emailInput && replytoField) {
+    emailInput.addEventListener('input', function() {
+      replytoField.value = this.value;
+    });
+  }
+
+  var form = document.getElementById('email-form');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    // Sync replyto
+    if (emailInput && replytoField) replytoField.value = emailInput.value;
+
+    var btn = document.getElementById('cf-submit-btn');
+    var errEl = document.getElementById('cf-error');
+    var successEl = document.getElementById('cf-success');
+    if (btn) { btn.disabled = true; btn.textContent = 'Enviando…'; }
+    if (errEl) errEl.style.display = 'none';
+
+    var data = new FormData(form);
+    fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+      .then(function(r) {
+        if (r.ok || r.status === 302) {
+          form.style.display = 'none';
+          if (successEl) successEl.style.display = 'block';
+        } else { throw new Error('fail'); }
+      })
+      .catch(function() {
+        if (btn) { btn.disabled = false; btn.textContent = 'Enviar mensaje →'; }
+        if (errEl) errEl.style.display = 'block';
+      });
   });
 })();
 
