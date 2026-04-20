@@ -291,9 +291,6 @@
   <!-- ── Webflow base styles ───────────────────────────────── -->
   <link rel="stylesheet" href="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/css/flama-creators.webflow.shared.d8134acc1.css" />
 
-  <!-- ── Swiper CSS ────────────────────────────────────────── -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-
   <!-- ── Site styles ───────────────────────────────────────── -->
   <style>
 .bg_modal {
@@ -1811,7 +1808,6 @@ details[open] .faq-q::after{transform:translateY(-50%) rotate(45deg)}
   <!-- ── Dependencies (head) ───────────────────────────────── -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
   <script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js" defer></script>
 </head>
 
 <body class="body">
@@ -2227,172 +2223,240 @@ de experiencia</div></div><div class="data"><div class="data-2"><div class="numb
 </style>
 
 
-<section id="portafolio" style="background:linear-gradient(180deg,#0e0603 0%,#160a04 50%,#0d0d0d 100%);padding:80px 0 90px;position:relative;overflow:hidden">
-<!-- Ambient glow -->
-<div style="position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);width:900px;height:600px;background:radial-gradient(ellipse,rgba(255,69,0,.05) 0%,transparent 65%);pointer-events:none"></div>
+<section id="portafolio" style="background:linear-gradient(180deg,#0e0603 0%,#0d0d0d 100%);padding:80px 0 90px;overflow:hidden">
 
 <style>
-/* ── PORTO CAROUSEL ───────────────────────────── */
-#porto-wrap {
-  position: relative;
-  max-width: 1300px;
-  margin: 48px auto 0;
-  padding: 0 72px;
-  box-sizing: border-box;
+/* ── PORTAFOLIO SCROLL CAROUSEL ── */
+.pm-header {
+  max-width: 1100px;
+  margin: 0 auto 48px;
+  padding: 0 24px;
 }
-#porto-swiper { overflow: hidden; width: 100%; }
-.porto-slide { cursor: pointer; user-select: none; }
-.porto-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  margin-top: 14px;
-  font-family: Montserrat, sans-serif; font-size: 11px; font-weight: 800;
+.pm-eyebrow {
+  font-family: Montserrat, sans-serif;
+  font-size: 11px; font-weight: 800;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: #FF4500; display: block; margin-bottom: 14px;
+}
+.pm-title {
+  font-family: Montserrat, sans-serif;
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 900; color: #fff;
+  line-height: 1.05; margin: 0 0 16px;
+}
+.pm-title span {
+  background: linear-gradient(135deg,#FF4500,#FFD700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.pm-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px; color: rgba(255,255,255,.5);
+  line-height: 1.7; max-width: 600px; margin: 0;
+}
+/* Scroll track */
+.pm-track-wrap {
+  position: relative;
+}
+.pm-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 12px 24px 24px;
+}
+.pm-track::-webkit-scrollbar { display: none; }
+/* Cards */
+.pm-card {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+  background: #111;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform .3s, box-shadow .3s, border-color .3s;
+  display: flex;
+  flex-direction: column;
+}
+.pm-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(255,69,0,.2);
+  border-color: rgba(255,69,0,.35);
+}
+.pm-card-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+}
+.pm-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+.pm-card-name {
+  font-family: Montserrat, sans-serif;
+  font-size: 16px; font-weight: 800;
+  color: #fff; margin: 0;
+}
+.pm-card-svc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; color: rgba(255,255,255,.4);
+  margin: 0;
+}
+.pm-card-btn {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 8px;
+  font-family: Montserrat, sans-serif;
+  font-size: 10px; font-weight: 800;
   letter-spacing: 1.5px; text-transform: uppercase;
   color: #fff;
-  padding: 10px 20px;
-  background: linear-gradient(135deg, rgba(255,69,0,.15), rgba(255,69,0,.08));
-  border: 1px solid rgba(255,69,0,.35);
+  padding: 9px 18px;
+  background: rgba(255,69,0,.12);
+  border: 1px solid rgba(255,69,0,.3);
   border-radius: 100px;
   transition: all .22s;
+  width: fit-content;
 }
-.porto-slide:hover .porto-btn {
-  background: linear-gradient(135deg, #FF4500, #FF6B35);
+.pm-card:hover .pm-card-btn {
+  background: linear-gradient(135deg,#FF4500,#FF6B35);
   border-color: transparent;
-  box-shadow: 0 0 20px rgba(255,69,0,.4);
+  box-shadow: 0 0 18px rgba(255,69,0,.4);
 }
-.porto-arr {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  width: 52px; height: 52px; border-radius: 50%;
-  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
-  color: #fff; cursor: pointer; z-index: 10;
+/* Nav arrows */
+.pm-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 28px;
+  padding: 0 24px;
+}
+.pm-arrow {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  color: #fff; font-size: 20px;
   display: flex; align-items: center; justify-content: center;
-  transition: all .22s; font-size: 22px; line-height: 1;
+  cursor: pointer;
+  transition: all .22s;
+  user-select: none; flex-shrink: 0;
 }
-.porto-arr:hover {
+.pm-arrow:hover {
   background: #FF4500; border-color: #FF4500;
-  box-shadow: 0 0 24px rgba(255,69,0,.5);
+  box-shadow: 0 0 20px rgba(255,69,0,.5);
 }
-#porto-prev { left: 8px; transform: translateY(-50%) rotate(180deg); }
-#porto-prev:hover { transform: translateY(-50%) rotate(180deg) scale(1.08); }
-#porto-next { right: 8px; }
-#porto-next:hover { transform: translateY(-50%) scale(1.08); }
-.porto-counter {
-  text-align: center; margin-top: 24px;
-  font-family: Montserrat, sans-serif; font-size: 12px; font-weight: 700;
-  letter-spacing: 3px; color: rgba(255,255,255,.35);
+.pm-counter {
+  font-family: Montserrat, sans-serif;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 2px; color: rgba(255,255,255,.3);
+  min-width: 60px; text-align: center;
 }
-.porto-counter span { color: #FF4500; }
+.pm-counter span { color: #FF4500; }
 @media (max-width: 640px) {
-  #porto-wrap { padding: 0 48px; }
-  .porto-arr { width: 40px; height: 40px; font-size: 18px; }
+  .pm-card { flex: 0 0 260px; }
+  .pm-card-img { aspect-ratio: 4/3; }
 }
-</style>
-<style>
-/* ── PORTAFOLIO HEADER (standalone, no Webflow classes) ── */
-#porto-header {
-  max-width:900px;
-  margin:0 auto 52px;
-  padding:0 32px;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  gap:16px;
-}
-#porto-header h2 {
-  font-family:Montserrat,sans-serif;
-  font-size:clamp(32px,5vw,54px);
-  font-weight:900;
-  color:#fff;
-  line-height:1.05;
-  margin:0;
-}
-#porto-header p {
-  font-family:'DM Sans',sans-serif;
-  font-size:16px;
-  color:rgba(255,255,255,.5);
-  line-height:1.75;
-  max-width:640px;
-  margin:0;
+@media (max-width: 400px) {
+  .pm-card { flex: 0 0 calc(100vw - 48px); }
 }
 </style>
 
-<div id="porto-header">
-  <span style="font-family:Montserrat,sans-serif;font-size:11px;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:#FF4500">MARCAS EN LLAMAS</span>
-  <h2>Spreading the fire,<br><span style="background:linear-gradient(135deg,#FF4500,#FFD700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">one brand at a time.</span></h2>
-  <p>Transformamos ideas en resultados medibles. Branding, redes sociales, diseño web, campañas publicitarias, estrategia digital y producción audiovisual. Más de 40 marcas encendidas en Lima.</p>
+<!-- 16 Modals (hidden) -->
+<div id="modal-1" class="bg_modal" onclick="if(event.target===this)this.style.display='none'"><div class="modal"><div class="modal_close" onclick="this.closest('.bg_modal').style.display='none'"><svg width="22" height="22" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/689f964c187529203bdc68f7_DSC01779.avif" loading="lazy" alt="Travex" class="card_img"/><div class="block"><h3 class="card_title">01. Travex</h3><p class="text">Marca peruana líder en cerraduras y candados con más de 50 años. Redes sociales en Perú y Ecuador, estrategias con influencers y SEO.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Manejo de redes, SEO</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">2024 - actualidad</p></div></div></div></div>
+<div id="modal-2" class="bg_modal" onclick="if(event.target===this)this.style.display='none'"><div class="modal"><div class="modal_close" onclick="this.closest('.bg_modal').style.display='none'"><svg width="22" height="22" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/68f2a2bf7c583a5c61015f17_DSC04257.avif" loading="lazy" alt="Kerastase" class="card_img"/><div class="block"><h3 class="card_title">02. Kerastase</h3><p class="text">Generación de contenido para el Módulo del Jockey Plaza, evento de influencers y Pop Up en Falabella.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Creación de Contenido</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Set. 2025</p></div></div></div></div>
+<div id="modal-3" class="bg_modal" onclick="if(event.target===this)this.style.display='none'"><div class="modal"><div class="modal_close" onclick="this.closest('.bg_modal').style.display='none'"><svg width="22" height="22" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bebcc20427ddb2d05ef00_DSC06946%20(1).avif" loading="lazy" alt="Anima e Cuore" class="card_img"/><div class="block"><h3 class="card_title">03. Anima e Cuore</h3><p class="text">Producción audiovisual profesional y sesiones fotográficas para redes sociales. Comunicación de marca y visibilidad online.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Manejo de redes</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Oct. 2025 - actualidad</p></div></div></div></div>
+<div id="modal-4" class="bg_modal" onclick="if(event.target===this)this.style.display='none'"><div class="modal"><div class="modal_close" onclick="this.closest('.bg_modal').style.display='none'"><svg width="22" height="22" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/696e81823f8d958f1a026843_Cerveza%20Cristal%20(1).avif" loading="lazy" alt="Cristal" class="card_img"/><div class="block"><h3 class="card_title">04. Cristal</h3><p class="text">Producción y edición de video para lanzamiento de patrocinio junto a Atlético Grau de Piura.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Edición y PostProducción</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Ene. 2026</p></div></div></div></div>
+<div id="modal-5" class="bg_modal" onclick="if(event.target===this)this.style.display='none'"><div class="modal"><div class="modal_close" onclick="this.closest('.bg_modal').style.display='none'"><svg width="22" height="22" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bec9a0f6ea15dffb28018_Costa%20Gas%201.avif" loading="lazy" alt="Costa GAS" class="card_img"/><div class="block"><h3 class="card_title">05. Costa GAS</h3><p class="text">Manejo integral de redes sociales y mantenimiento web. Presencia digital, comunicación de marca y posicionamiento online.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Creación de Contenido</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Ene. 2026 - actualidad</p></div></div></div></div>
+<div id="modal-6" class="bg_modal" onclick="if(event.target===this)this.style.display='none'"><div class="modal"><div class="modal_close" onclick="this.closest('.bg_modal').style.display='none'"><svg width="22" height="22" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bed74801feb3676d946bf_DSC03220%20(1).avif" loading="lazy" alt="L'Oréal" class="card_img"/><div class="block"><h3 class="card_title">06. L'Oréal</h3><p class="text">Cobertura audiovisual de eventos con fotografía y videos para redes. Múltiples centros comerciales de Lima.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Creación de Contenido</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Nov. 2025</p></div></div></div></div>
+<div id="modal-7" class="bg_modal" onclick="if(event.target===this)this.style.display='none'"><div class="modal"><div class="modal_close" onclick="this.closest('.bg_modal').style.display='none'"><svg width="22" height="22" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/68f2a2bf7542aee01239204b_DSC04577.avif" loading="lazy" alt="Carnal" class="card_img"/><div class="block"><h3 class="card_title">07. Carnal</h3><p class="text">Generación de contenido (fotos y videos) para redes sociales.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Creación de Contenido</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Ago. 2025 - actualidad</p></div></div></div></div>
+<div id="modal-8" class="bg_modal" onclick="if(event.target===this)this.style.display='none'"><div class="modal"><div class="modal_close" onclick="this.closest('.bg_modal').style.display='none'"><svg width="22" height="22" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/689f9d83a60715321df32e38_super%20ardi%20juguete.avif" loading="lazy" alt="Super" class="card_img"/><div class="block"><h3 class="card_title">08. Super</h3><p class="text">Marca peruana de papel higiénico orientada al canal tradicional. Más de 10 años en el mercado peruano.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Manejo de redes, landing page</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Dic. 2024 - actualidad</p></div></div></div></div>
+<div id="modal-9" class="bg_modal" onclick="if(event.target===this)this.style.display='none'"><div class="modal"><div class="modal_close" onclick="this.closest('.bg_modal').style.display='none'"><svg width="22" height="22" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bef78f289580dbc0efc87_DSC05612%20(1).avif" loading="lazy" alt="Shi Nua" class="card_img"/><div class="block"><h3 class="card_title">09. Shi Nua</h3><p class="text">Contenido audiovisual y fotografía profesional con enfoque en branding, estética visual y posicionamiento digital.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Manejo de redes, fotos</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Oct. 2025 - actualidad</p></div></div></div></div>
+<div id="modal-10" class="bg_modal" onclick="if(event.target===this)this.style.display='none'"><div class="modal"><div class="modal_close" onclick="this.closest('.bg_modal').style.display='none'"><svg width="22" height="22" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/684763599038f926cb74f51e_DSC_2401-890x664.avif" loading="lazy" alt="Zafiro Luxury Store" class="card_img"/><div class="block"><h3 class="card_title">10. Zafiro Luxury</h3><p class="text">Gestión integral de redes, Meta Ads y Google Ads. Sesiones fotográficas profesionales para imagen de marca.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Manejo de redes</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Jun. 2024 - actualidad</p></div></div></div></div>
+<div id="modal-11" class="bg_modal" onclick="if(event.target===this)this.style.display='none'"><div class="modal"><div class="modal_close" onclick="this.closest('.bg_modal').style.display='none'"><svg width="22" height="22" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/68476359fce1358f7b5aaf8f_Copia-de-134-JHO00997-1-890x664.avif" loading="lazy" alt="San José" class="card_img"/><div class="block"><h3 class="card_title">11. San José</h3><p class="text">Turrones San José, marca tradicional peruana con más de 30 años de trayectoria en repostería artesanal.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Manejo de redes, fotos</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Mar. 2022</p></div></div></div></div>
+<div id="modal-12" class="bg_modal" onclick="if(event.target===this)this.style.display='none'"><div class="modal"><div class="modal_close" onclick="this.closest('.bg_modal').style.display='none'"><svg width="22" height="22" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bf29a3aae2f14421c34ec_Lala-oficial%20(1).avif" loading="lazy" alt="Lala" class="card_img"/><div class="block"><h3 class="card_title">12. Lala</h3><p class="text">Producción de videos y fotografía para redes sociales. Estrategia para aumentar presencia online y rendimiento de contenido.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Creación de contenido</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Dic. 2025 - actualidad</p></div></div></div></div>
+<div id="modal-13" class="bg_modal" onclick="if(event.target===this)this.style.display='none'"><div class="modal"><div class="modal_close" onclick="this.closest('.bg_modal').style.display='none'"><svg width="22" height="22" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bf3a4c7c2cc9ef28ea30f_DSC05779%20(1).avif" loading="lazy" alt="KF80" class="card_img"/><div class="block"><h3 class="card_title">13. KF80</h3><p class="text">Redes sociales y Meta Ads. Aumento de visibilidad y resultados comerciales medibles basados en performance.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Creación de contenido</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Nov. 2025 - actualidad</p></div></div></div></div>
+<div id="modal-14" class="bg_modal" onclick="if(event.target===this)this.style.display='none'"><div class="modal"><div class="modal_close" onclick="this.closest('.bg_modal').style.display='none'"><svg width="22" height="22" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bffc358711ef9d4c9b50c_Mesa%20de%20trabajo%201%20copia%2082%20(1).avif" loading="lazy" alt="Trazzo Corp" class="card_img"/><div class="block"><h3 class="card_title">14. Trazzo Corp</h3><p class="text">Redes sociales y piezas gráficas para medios offline y digitales. Identidad de marca y posicionamiento.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Creación de contenido</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Nov. 2025 - actualidad</p></div></div></div></div>
+<div id="modal-15" class="bg_modal" onclick="if(event.target===this)this.style.display='none'"><div class="modal"><div class="modal_close" onclick="this.closest('.bg_modal').style.display='none'"><svg width="22" height="22" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/68f2a2c1e94113e019e20893_JHO09974.avif" loading="lazy" alt="Fauna" class="card_img"/><div class="block"><h3 class="card_title">15. Fauna</h3><p class="text">Generación de contenido (fotos y videos) para redes sociales.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Creación de contenido</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Ago. 2025</p></div></div></div></div>
+<div id="modal-16" class="bg_modal" onclick="if(event.target===this)this.style.display='none'"><div class="modal"><div class="modal_close" onclick="this.closest('.bg_modal').style.display='none'"><svg width="22" height="22" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bf5b16399489883204812_DSC05545.avif" loading="lazy" alt="TD Synexx" class="card_img"/><div class="block"><h3 class="card_title">16. TD Synexx</h3><p class="text">Cobertura de eventos corporativos y producción audiovisual profesional. Power Up 2025 y más.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Creación de contenido</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Oct. - Dic. 2025</p></div></div></div></div>
+
+<!-- Section header -->
+<div class="pm-header">
+  <span class="pm-eyebrow">Marcas en Llamas</span>
+  <h2 class="pm-title">Spreading the fire,<br><span>one brand at a time.</span></h2>
+  <p class="pm-subtitle">Transformamos ideas en resultados medibles. Más de 40 marcas encendidas en Lima. Branding, redes sociales, diseño web, producción audiovisual y campañas digitales.</p>
 </div>
 
-
-
-<div class="w-layout-blockcontainer container vertical w-container">
-  <div class="block horizontal">
-    <div class="block">
-      <div class="subtitle"><strong>MARCAS EN LLAMAS </strong></div>
-      <h2 class="section_title white"><strong>Spreading the fire, one brand at a time.</strong></h2>
-    </div>
-    <p class="text">En <strong class="bold-text">Flama Creators</strong>, transformamos ideas en resultados medibles. Nuestro portafolio muestra una selección de proyectos de <strong class="bold-text">branding, gestión de redes sociales, diseño web, campañas publicitarias, estrategia digital y producción de contenido creativo.</strong><br/><br/>Descubre cómo ayudamos a nuestros clientes a conectar con su audiencia y destacar en un entorno digital competitivo. Cada caso es una muestra de nuestro enfoque estratégico, creatividad y compromiso con los resultados.</p>
+<!-- Carousel -->
+<div class="pm-track-wrap">
+  <div class="pm-track" id="pm-track">
+<div class="pm-card" onclick="document.getElementById('modal-1').style.display='flex'"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/689f964c187529203bdc68f7_DSC01779.avif" loading="lazy" alt="Travex" class="pm-card-img"/><div class="pm-card-body"><h3 class="pm-card-name">01. Travex</h3><p class="pm-card-svc">Manejo de redes, SEO</p><div class="pm-card-btn">Clickea para ver más +</div></div></div>
+<div class="pm-card" onclick="document.getElementById('modal-2').style.display='flex'"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/68f2a2bf7c583a5c61015f17_DSC04257.avif" loading="lazy" alt="Kerastase" class="pm-card-img"/><div class="pm-card-body"><h3 class="pm-card-name">02. Kerastase</h3><p class="pm-card-svc">Creación de Contenido</p><div class="pm-card-btn">Clickea para ver más +</div></div></div>
+<div class="pm-card" onclick="document.getElementById('modal-3').style.display='flex'"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bebcc20427ddb2d05ef00_DSC06946%20(1).avif" loading="lazy" alt="Anima e Cuore" class="pm-card-img"/><div class="pm-card-body"><h3 class="pm-card-name">03. Anima e Cuore</h3><p class="pm-card-svc">Manejo de redes</p><div class="pm-card-btn">Clickea para ver más +</div></div></div>
+<div class="pm-card" onclick="document.getElementById('modal-4').style.display='flex'"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/696e81823f8d958f1a026843_Cerveza%20Cristal%20(1).avif" loading="lazy" alt="Cristal" class="pm-card-img"/><div class="pm-card-body"><h3 class="pm-card-name">04. Cristal</h3><p class="pm-card-svc">Edición y PostProducción</p><div class="pm-card-btn">Clickea para ver más +</div></div></div>
+<div class="pm-card" onclick="document.getElementById('modal-5').style.display='flex'"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bec9a0f6ea15dffb28018_Costa%20Gas%201.avif" loading="lazy" alt="Costa GAS" class="pm-card-img"/><div class="pm-card-body"><h3 class="pm-card-name">05. Costa GAS</h3><p class="pm-card-svc">Creación de Contenido</p><div class="pm-card-btn">Clickea para ver más +</div></div></div>
+<div class="pm-card" onclick="document.getElementById('modal-6').style.display='flex'"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bed74801feb3676d946bf_DSC03220%20(1).avif" loading="lazy" alt="L'Oréal" class="pm-card-img"/><div class="pm-card-body"><h3 class="pm-card-name">06. L'Oréal</h3><p class="pm-card-svc">Creación de Contenido</p><div class="pm-card-btn">Clickea para ver más +</div></div></div>
+<div class="pm-card" onclick="document.getElementById('modal-7').style.display='flex'"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/68f2a2bf7542aee01239204b_DSC04577.avif" loading="lazy" alt="Carnal" class="pm-card-img"/><div class="pm-card-body"><h3 class="pm-card-name">07. Carnal</h3><p class="pm-card-svc">Creación de Contenido</p><div class="pm-card-btn">Clickea para ver más +</div></div></div>
+<div class="pm-card" onclick="document.getElementById('modal-8').style.display='flex'"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/689f9d83a60715321df32e38_super%20ardi%20juguete.avif" loading="lazy" alt="Super" class="pm-card-img"/><div class="pm-card-body"><h3 class="pm-card-name">08. Super</h3><p class="pm-card-svc">Manejo de redes, landing page</p><div class="pm-card-btn">Clickea para ver más +</div></div></div>
+<div class="pm-card" onclick="document.getElementById('modal-9').style.display='flex'"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bef78f289580dbc0efc87_DSC05612%20(1).avif" loading="lazy" alt="Shi Nua" class="pm-card-img"/><div class="pm-card-body"><h3 class="pm-card-name">09. Shi Nua</h3><p class="pm-card-svc">Manejo de redes, fotos</p><div class="pm-card-btn">Clickea para ver más +</div></div></div>
+<div class="pm-card" onclick="document.getElementById('modal-10').style.display='flex'"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/684763599038f926cb74f51e_DSC_2401-890x664.avif" loading="lazy" alt="Zafiro Luxury Store" class="pm-card-img"/><div class="pm-card-body"><h3 class="pm-card-name">10. Zafiro Luxury</h3><p class="pm-card-svc">Manejo de redes</p><div class="pm-card-btn">Clickea para ver más +</div></div></div>
+<div class="pm-card" onclick="document.getElementById('modal-11').style.display='flex'"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/68476359fce1358f7b5aaf8f_Copia-de-134-JHO00997-1-890x664.avif" loading="lazy" alt="San José" class="pm-card-img"/><div class="pm-card-body"><h3 class="pm-card-name">11. San José</h3><p class="pm-card-svc">Manejo de redes, fotos</p><div class="pm-card-btn">Clickea para ver más +</div></div></div>
+<div class="pm-card" onclick="document.getElementById('modal-12').style.display='flex'"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bf29a3aae2f14421c34ec_Lala-oficial%20(1).avif" loading="lazy" alt="Lala" class="pm-card-img"/><div class="pm-card-body"><h3 class="pm-card-name">12. Lala</h3><p class="pm-card-svc">Creación de contenido</p><div class="pm-card-btn">Clickea para ver más +</div></div></div>
+<div class="pm-card" onclick="document.getElementById('modal-13').style.display='flex'"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bf3a4c7c2cc9ef28ea30f_DSC05779%20(1).avif" loading="lazy" alt="KF80" class="pm-card-img"/><div class="pm-card-body"><h3 class="pm-card-name">13. KF80</h3><p class="pm-card-svc">Creación de contenido</p><div class="pm-card-btn">Clickea para ver más +</div></div></div>
+<div class="pm-card" onclick="document.getElementById('modal-14').style.display='flex'"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bffc358711ef9d4c9b50c_Mesa%20de%20trabajo%201%20copia%2082%20(1).avif" loading="lazy" alt="Trazzo Corp" class="pm-card-img"/><div class="pm-card-body"><h3 class="pm-card-name">14. Trazzo Corp</h3><p class="pm-card-svc">Creación de contenido</p><div class="pm-card-btn">Clickea para ver más +</div></div></div>
+<div class="pm-card" onclick="document.getElementById('modal-15').style.display='flex'"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/68f2a2c1e94113e019e20893_JHO09974.avif" loading="lazy" alt="Fauna" class="pm-card-img"/><div class="pm-card-body"><h3 class="pm-card-name">15. Fauna</h3><p class="pm-card-svc">Creación de contenido</p><div class="pm-card-btn">Clickea para ver más +</div></div></div>
+<div class="pm-card" onclick="document.getElementById('modal-16').style.display='flex'"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bf5b16399489883204812_DSC05545.avif" loading="lazy" alt="TD Synexx" class="pm-card-img"/><div class="pm-card-body"><h3 class="pm-card-name">16. TD Synexx</h3><p class="pm-card-svc">Creación de contenido</p><div class="pm-card-btn">Clickea para ver más +</div></div></div>
   </div>
 </div>
 
-<!-- Modals (hidden) -->
-<div id="modal-1" class="bg_modal"><div class="modal"><div class="modal_close"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/689f964c187529203bdc68f7_DSC01779.avif" loading="lazy" alt="Imagen de trabajo con Travex" class="card_img"/><div class="block"><h3 class="card_title">01. Travex</h3><p class="text">Marca peruana líder en la categoría de cerraduras y candados con más de 50 años de experiencia. Redes sociales de Perú y Ecuador: Instagram, Facebook, YouTube y TikTok. Estrategias con influencers y posicionamiento SEO.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Manejo de redes, SEO</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">2024 - actualidad</p></div></div></div></div>
-<div id="modal-2" class="bg_modal"><div class="modal"><div class="modal_close"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/68f2a2bf7c583a5c61015f17_DSC04257.avif" loading="lazy" alt="Imagen de proyecto de Kerastase" class="card_img"/><div class="block"><h3 class="card_title">02. Kerastase</h3><p class="text">Generación de contenido (fotos y videos) para el Módulo del Jockey Plaza, evento de influencers y Pop Up en Falabella.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Creación de Contenido</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Setiembre 2025</p></div></div></div></div>
-<div id="modal-3" class="bg_modal"><div class="modal"><div class="modal_close"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bebcc20427ddb2d05ef00_DSC06946%20(1).avif" loading="lazy" alt="Imagen de trabajo con Anima e Cuore" class="card_img"/><div class="block"><h3 class="card_title">03. Anima e Cuore</h3><p class="text">Producción de contenido audiovisual profesional y sesiones fotográficas para redes sociales, orientadas a fortalecer la comunicación de marca, mejorar la visibilidad online y consolidar su presencia digital.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Manejo de redes</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Octubre 2025 - Actualidad</p></div></div></div></div>
-<div id="modal-4" class="bg_modal"><div class="modal"><div class="modal_close"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/696e81823f8d958f1a026843_Cerveza%20Cristal%20(1).avif" loading="lazy" alt="Imagen de proyecto de Cristal" class="card_img"/><div class="block"><h3 class="card_title">04. Cristal</h3><p class="text">Producción y edición de video para lanzamiento de patrocinio de Cerveza Cristal junto a Atlético Grau de Piura.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Edición y PostProducción</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Enero 2026</p></div></div></div></div>
-<div id="modal-5" class="bg_modal"><div class="modal"><div class="modal_close"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bec9a0f6ea15dffb28018_Costa%20Gas%201.avif" loading="lazy" alt="Imagen de trabajo con Costa Gas" class="card_img"/><div class="block"><h3 class="card_title">05. Costa GAS</h3><p class="text">Manejo integral de redes sociales y mantenimiento de página web, enfocados en mejorar la presencia digital, la comunicación de marca y el posicionamiento online de la empresa.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Creación de Contenido</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Enero 2026 - Actualidad</p></div></div></div></div>
-<div id="modal-6" class="bg_modal"><div class="modal"><div class="modal_close"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bed74801feb3676d946bf_DSC03220%20(1).avif" loading="lazy" alt="Imagen de trabajo con L'Oreal" class="card_img"/><div class="block"><h3 class="card_title">06. L'Oréal</h3><p class="text">Cobertura audiovisual de eventos con fotografía profesional y producción de videos optimizados para redes sociales, realizados en diversos centros comerciales de Lima.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Creación de Contenido</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Noviembre 2025</p></div></div></div></div>
-<div id="modal-7" class="bg_modal"><div class="modal"><div class="modal_close"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/68f2a2bf7542aee01239204b_DSC04577.avif" loading="lazy" alt="Imagen de proyecto de Carnal" class="card_img"/><div class="block"><h3 class="card_title">07. Carnal</h3><p class="text">Generación de contenido (fotos y videos) para redes sociales.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Creación de Contenido</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Agosto 2025 - Actualidad</p></div></div></div></div>
-<div id="modal-8" class="bg_modal"><div class="modal"><div class="modal_close"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/689f9d83a60715321df32e38_super%20ardi%20juguete.avif" loading="lazy" alt="Imagen de trabajo con Super" class="card_img"/><div class="block"><h3 class="card_title">08. Super</h3><p class="text">Marca peruana de papel higiénico, orientada a ventas en el canal tradicional, con presencia en el mercado peruano desde hace más de 10 años.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Manejo de redes, landing page</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Diciembre 2024 - Actualidad</p></div></div></div></div>
-<div id="modal-9" class="bg_modal"><div class="modal"><div class="modal_close"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bef78f289580dbc0efc87_DSC05612%20(1).avif" loading="lazy" alt="Fotografía de proyecto de Flama Creators" class="card_img"/><div class="block"><h3 class="card_title">09. Shi Nua</h3><p class="text">Creación de contenido audiovisual y fotografía profesional para redes sociales, con enfoque en branding, estética visual y optimización de contenido para un mejor alcance y posicionamiento digital.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Manejo de redes, sesión de fotos</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Octubre 2025 - Actualidad</p></div></div></div></div>
-<div id="modal-10" class="bg_modal"><div class="modal"><div class="modal_close"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/684763599038f926cb74f51e_DSC_2401-890x664.avif" loading="lazy" alt="Zafiro Luxury Store" class="card_img"/><div class="block"><h3 class="card_title">10. Zafiro Luxury Store</h3><p class="text">Gestión integral de redes sociales desde su creación, complementada con campañas de Meta Ads y Google Ads. Sesiones fotográficas profesionales para potenciar la imagen y comunicación de la marca.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Manejo de redes</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Junio 2024 - Actualidad</p></div></div></div></div>
-<div id="modal-11" class="bg_modal"><div class="modal"><div class="modal_close"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/68476359fce1358f7b5aaf8f_Copia-de-134-JHO00997-1-890x664.avif" loading="lazy" alt="Imagen de proyecto de Turrones San Jose" class="card_img"/><div class="block"><h3 class="card_title">11. San José</h3><p class="text">Turrones San José es una marca tradicional peruana especializada en la elaboración artesanal de turrones y dulces típicos. Con más de 30 años de trayectoria, referente de calidad y sabor.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Manejo de redes, sesión de fotos</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Marzo 2022</p></div></div></div></div>
-<div id="modal-12" class="bg_modal"><div class="modal"><div class="modal_close"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bf29a3aae2f14421c34ec_Lala-oficial%20(1).avif" loading="lazy" alt="Imagen de trabajo con Lala" class="card_img"/><div class="block"><h3 class="card_title">12. Lala</h3><p class="text">Producción de videos y fotografía profesional para redes sociales, desarrollados estratégicamente para aumentar la presencia online y optimizar el rendimiento del contenido digital.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Creación de contenido</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Diciembre 2025 - Actualidad</p></div></div></div></div>
-<div id="modal-13" class="bg_modal"><div class="modal"><div class="modal_close"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bf3a4c7c2cc9ef28ea30f_DSC05779%20(1).avif" loading="lazy" alt="Imagen de trabajo con KF80" class="card_img"/><div class="block"><h3 class="card_title">13. KF80</h3><p class="text">Manejo integral de redes sociales y gestión de campañas publicitarias en Meta Ads, enfocadas en aumentar la visibilidad de marca y generar resultados comerciales medibles.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Creación de contenido</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Noviembre 2025 - Actualidad</p></div></div></div></div>
-<div id="modal-14" class="bg_modal"><div class="modal"><div class="modal_close"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bffc358711ef9d4c9b50c_Mesa%20de%20trabajo%201%20copia%2082%20(1).avif" loading="lazy" alt="Imagen de trabajo con Trazzo Corp" class="card_img"/><div class="block"><h3 class="card_title">14. Trazzo Corp</h3><p class="text">Manejo integral de redes sociales y producción de piezas gráficas profesionales para medios offline y digitales, fortaleciendo la identidad de marca y el posicionamiento.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Creación de contenido</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Noviembre 2025 - Actualidad</p></div></div></div></div>
-<div id="modal-15" class="bg_modal"><div class="modal"><div class="modal_close"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/68f2a2c1e94113e019e20893_JHO09974.avif" loading="lazy" alt="Proyecto de Fauna" class="card_img"/><div class="block"><h3 class="card_title">15. Fauna</h3><p class="text">Generación de contenido (fotos y videos) para redes sociales.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Creación de contenido</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Agosto 2025</p></div></div></div></div>
-<div id="modal-16" class="bg_modal"><div class="modal"><div class="modal_close"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bf5b16399489883204812_DSC05545.avif" loading="lazy" alt="Fotografía de portafolio de Flama Creators" class="card_img"/><div class="block"><h3 class="card_title">16. TD Synexx</h3><p class="text">Cobertura de eventos corporativos y producción audiovisual profesional, incluyendo Power Up 2025, premiaciones y eventos en múltiples locaciones.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Creación de contenido</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Octubre 2025 - Diciembre 2025</p></div></div></div></div>
-
-<!-- Full-width Swiper carousel -->
-
-<div id="porto-wrap">
-  <div id="porto-swiper" class="swiper">
-    <div class="swiper-wrapper">
-<div data-modal="modal-1" class="swiper-slide porto-slide"><div class="card project"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/689f964c187529203bdc68f7_DSC01779.avif" loading="lazy" alt="Imagen de trabajo con Travex" class="card_img project"/><div class="card_header"><h3 class="card_title">01. Travex</h3><p class="card_text">Marca peruana líder en la categoría de cerraduras y candados con más de 50 años ...</p><div class="porto-btn"><span>Clickea para ver más +</span></div></div></div></div>
-<div data-modal="modal-2" class="swiper-slide porto-slide"><div class="card project"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/68f2a2bf7c583a5c61015f17_DSC04257.avif" loading="lazy" alt="Imagen de proyecto de Kerastase" class="card_img project"/><div class="card_header"><h3 class="card_title">02. Kerastase</h3><p class="card_text">Generación de contenido (fotos y videos) para el Módulo del Jockey Plaza, evento...</p><div class="porto-btn"><span>Clickea para ver más +</span></div></div></div></div>
-<div data-modal="modal-3" class="swiper-slide porto-slide"><div class="card project"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bebcc20427ddb2d05ef00_DSC06946%20(1).avif" loading="lazy" alt="Imagen de trabajo con Anima e Cuore" class="card_img project"/><div class="card_header"><h3 class="card_title">03. Anima e Cuore</h3><p class="card_text">Producción de contenido audiovisual profesional y sesiones fotográficas para red...</p><div class="porto-btn"><span>Clickea para ver más +</span></div></div></div></div>
-<div data-modal="modal-4" class="swiper-slide porto-slide"><div class="card project"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/696e81823f8d958f1a026843_Cerveza%20Cristal%20(1).avif" loading="lazy" alt="Imagen de proyecto de Cristal" class="card_img project"/><div class="card_header"><h3 class="card_title">04. Cristal</h3><p class="card_text">Producción y edición de video para lanzamiento de patrocinio de Cerveza Cristal ...</p><div class="porto-btn"><span>Clickea para ver más +</span></div></div></div></div>
-<div data-modal="modal-5" class="swiper-slide porto-slide"><div class="card project"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bec9a0f6ea15dffb28018_Costa%20Gas%201.avif" loading="lazy" alt="Imagen de trabajo con Costa Gas" class="card_img project"/><div class="card_header"><h3 class="card_title">05. Costa GAS</h3><p class="card_text">Manejo integral de redes sociales y mantenimiento de página web, enfocados en me...</p><div class="porto-btn"><span>Clickea para ver más +</span></div></div></div></div>
-<div data-modal="modal-6" class="swiper-slide porto-slide"><div class="card project"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bed74801feb3676d946bf_DSC03220%20(1).avif" loading="lazy" alt="Imagen de trabajo con L'Oreal" class="card_img project"/><div class="card_header"><h3 class="card_title">06. L'Oréal</h3><p class="card_text">Cobertura audiovisual de eventos con fotografía profesional y producción de vide...</p><div class="porto-btn"><span>Clickea para ver más +</span></div></div></div></div>
-<div data-modal="modal-7" class="swiper-slide porto-slide"><div class="card project"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/68f2a2bf7542aee01239204b_DSC04577.avif" loading="lazy" alt="Imagen de proyecto de Carnal" class="card_img project"/><div class="card_header"><h3 class="card_title">07. Carnal</h3><p class="card_text">Generación de contenido (fotos y videos) para redes sociales.</p><div class="porto-btn"><span>Clickea para ver más +</span></div></div></div></div>
-<div data-modal="modal-8" class="swiper-slide porto-slide"><div class="card project"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/689f9d83a60715321df32e38_super%20ardi%20juguete.avif" loading="lazy" alt="Imagen de trabajo con Super" class="card_img project"/><div class="card_header"><h3 class="card_title">08. Super</h3><p class="card_text">Marca peruana de papel higiénico, orientada a ventas en el canal tradicional, co...</p><div class="porto-btn"><span>Clickea para ver más +</span></div></div></div></div>
-<div data-modal="modal-9" class="swiper-slide porto-slide"><div class="card project"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bef78f289580dbc0efc87_DSC05612%20(1).avif" loading="lazy" alt="Fotografía de proyecto de Flama Creators" class="card_img project"/><div class="card_header"><h3 class="card_title">09. Shi Nua</h3><p class="card_text">Creación de contenido audiovisual y fotografía profesional para redes sociales, ...</p><div class="porto-btn"><span>Clickea para ver más +</span></div></div></div></div>
-<div data-modal="modal-10" class="swiper-slide porto-slide"><div class="card project"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/684763599038f926cb74f51e_DSC_2401-890x664.avif" loading="lazy" alt="Zafiro Luxury Store" class="card_img project"/><div class="card_header"><h3 class="card_title">10. Zafiro Luxury Store</h3><p class="card_text">Gestión integral de redes sociales desde su creación, complementada con campañas...</p><div class="porto-btn"><span>Clickea para ver más +</span></div></div></div></div>
-<div data-modal="modal-11" class="swiper-slide porto-slide"><div class="card project"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/68476359fce1358f7b5aaf8f_Copia-de-134-JHO00997-1-890x664.avif" loading="lazy" alt="Imagen de proyecto de Turrones San Jose" class="card_img project"/><div class="card_header"><h3 class="card_title">11. San José</h3><p class="card_text">Turrones San José es una marca tradicional peruana especializada en la elaboraci...</p><div class="porto-btn"><span>Clickea para ver más +</span></div></div></div></div>
-<div data-modal="modal-12" class="swiper-slide porto-slide"><div class="card project"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bf29a3aae2f14421c34ec_Lala-oficial%20(1).avif" loading="lazy" alt="Imagen de trabajo con Lala" class="card_img project"/><div class="card_header"><h3 class="card_title">12. Lala</h3><p class="card_text">Producción de videos y fotografía profesional para redes sociales, desarrollados...</p><div class="porto-btn"><span>Clickea para ver más +</span></div></div></div></div>
-<div data-modal="modal-13" class="swiper-slide porto-slide"><div class="card project"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bf3a4c7c2cc9ef28ea30f_DSC05779%20(1).avif" loading="lazy" alt="Imagen de trabajo con KF80" class="card_img project"/><div class="card_header"><h3 class="card_title">13. KF80</h3><p class="card_text">Manejo integral de redes sociales y gestión de campañas publicitarias en Meta Ad...</p><div class="porto-btn"><span>Clickea para ver más +</span></div></div></div></div>
-<div data-modal="modal-14" class="swiper-slide porto-slide"><div class="card project"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bffc358711ef9d4c9b50c_Mesa%20de%20trabajo%201%20copia%2082%20(1).avif" loading="lazy" alt="Imagen de trabajo con Trazzo Corp" class="card_img project"/><div class="card_header"><h3 class="card_title">14. Trazzo Corp</h3><p class="card_text">Manejo integral de redes sociales y producción de piezas gráficas profesionales ...</p><div class="porto-btn"><span>Clickea para ver más +</span></div></div></div></div>
-<div data-modal="modal-15" class="swiper-slide porto-slide"><div class="card project"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/68f2a2c1e94113e019e20893_JHO09974.avif" loading="lazy" alt="Proyecto de Fauna" class="card_img project"/><div class="card_header"><h3 class="card_title">15. Fauna</h3><p class="card_text">Generación de contenido (fotos y videos) para redes sociales.</p><div class="porto-btn"><span>Clickea para ver más +</span></div></div></div></div>
-<div data-modal="modal-16" class="swiper-slide porto-slide"><div class="card project"><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bf5b16399489883204812_DSC05545.avif" loading="lazy" alt="Fotografía de portafolio de Flama Creators" class="card_img project"/><div class="card_header"><h3 class="card_title">16. TD Synexx</h3><p class="card_text">Cobertura de eventos corporativos y producción audiovisual profesional, incluyen...</p><div class="porto-btn"><span>Clickea para ver más +</span></div></div></div></div>
-    </div>
-  </div>
-  <button id="porto-prev" class="porto-arr" aria-label="Anterior"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 29.541 22.323"><g transform="translate(0 1.014)"><path d="M115.445,20.633l9.311-10.148L115.445.338" transform="translate(-97.25 -0.338)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="3"/><line x1="27.506" transform="translate(0 10.148)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="3"/></g></svg></button>
-  <button id="porto-next" class="porto-arr" aria-label="Siguiente"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 29.541 22.323"><g transform="translate(0 1.014)"><path d="M115.445,20.633l9.311-10.148L115.445.338" transform="translate(-97.25 -0.338)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="3"/><line x1="27.506" transform="translate(0 10.148)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="3"/></g></svg></button>
-  <p class="porto-counter"><span id="porto-cur">1</span>&ndash;<span id="porto-end">3</span> / 16</p>
+<!-- Navigation -->
+<div class="pm-nav">
+  <div class="pm-arrow" id="pm-prev" aria-label="Anterior">&#8592;</div>
+  <span class="pm-counter"><span id="pm-cur">1</span> / 16</span>
+  <div class="pm-arrow" id="pm-next" aria-label="Siguiente">&#8594;</div>
 </div>
 
+<script>
+(function(){
+  var track = document.getElementById('pm-track');
+  var prev  = document.getElementById('pm-prev');
+  var next  = document.getElementById('pm-next');
+  var cur   = document.getElementById('pm-cur');
+  if (!track) return;
+
+  var CARD_W = 320; // card width + gap
+  function scroll(dir) {
+    track.scrollBy({ left: dir * CARD_W, behavior: 'smooth' });
+  }
+  prev.addEventListener('click', function() { scroll(-1); });
+  next.addEventListener('click', function() { scroll(1);  });
+
+  // Update counter on scroll
+  track.addEventListener('scroll', function() {
+    var idx = Math.round(track.scrollLeft / CARD_W) + 1;
+    if (cur) cur.textContent = Math.min(idx, 16);
+  }, { passive: true });
+
+  // Touch swipe hint: slightly peek next card on mobile
+  var cards = track.querySelectorAll('.pm-card');
+  if (cards.length && window.innerWidth < 640) {
+    CARD_W = cards[0].offsetWidth + 20;
+  }
+})();
+</script>
 
 </section>
 
 
-<!-- Swiper carousel: show 3 cards on desktop, 2 on tablet, 1 on mobile -->
-<style>
-/* ── Portfolio: Swiper carousel (JS initializes on window load) ── */
-.swiper.is-slider-main { overflow:hidden; }
-/* Prevent jump before JS init */
-.swiper-wrapper.is-slider-main { transition: transform 300ms ease; }
-/* Ensure arrows are visible */
-.slider-main_arrow { display:flex!important; }
-.slider-main_top-wrapper { display:block!important; }
-</style>
 
 <style>
 .sr{opacity:0;transform:translateY(36px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
@@ -2542,8 +2606,6 @@ details[open] .faq-q::after{transform:translateY(-50%) rotate(45deg)}
 @media (max-width: 640px) {
   #reel-phone-wrap { width: 240px; }
   #reel-screen { width: 218px; height: 388px; }
-  /* scale = 218/338 = 0.645; 600×0.645=387 */
-  #reel-iframe { transform: scale(0.645); }
 }
 </style>
 
@@ -2595,30 +2657,16 @@ details[open] .faq-q::after{transform:translateY(-50%) rotate(45deg)}
 <script>
 (function(){
   var poster = document.getElementById('reel-poster');
-  var video = document.getElementById('reel-video');
+  var video  = document.getElementById('reel-video');
   if (!poster || !video) return;
+  poster.style.cursor = 'pointer';
   poster.addEventListener('click', function() {
-    video.play();
-    poster.style.opacity = '0';
+    video.muted = false;
+    video.play().catch(function(){ video.muted = true; video.play(); });
+    poster.style.transition = 'opacity .4s';
+    poster.style.opacity    = '0';
     poster.style.pointerEvents = 'none';
   });
-  // Hover effect on play button
-  poster.style.cursor = 'pointer';
-    // Fallback: show after 2.5s even if load event doesn't fire
-    setTimeout(function() {
-      iframe.style.opacity = '1';
-      poster.style.opacity = '0';
-      poster.style.pointerEvents = 'none';
-    }, 2500);
-  }
-  poster.addEventListener('click', loadReel);
-  // Auto-load when section enters viewport (threshold lower = triggers sooner)
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) { if (e.isIntersecting) { loadReel(); io.disconnect(); } });
-    }, { threshold: 0.25 });
-    io.observe(document.getElementById('reel-destacado'));
-  }
 })();
 </script>
 
@@ -3750,52 +3798,7 @@ $("[data-lenis-toggle]").on("click", function () {
 
 
 
-// Porto Swiper — clean init, full width, 16 slides, modal on click
-window.addEventListener('load', function () {
-  if (typeof Swiper === 'undefined') return;
-  var perView = window.innerWidth >= 992 ? 3 : window.innerWidth >= 640 ? 2 : 1;
-  var portoSwiper = new Swiper('#porto-swiper', {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    grabCursor: true,
-    speed: 380,
-    breakpoints: {
-      640: { slidesPerView: 2, spaceBetween: 20 },
-      992: { slidesPerView: 3, spaceBetween: 24 }
-    },
-    navigation: {
-      nextEl: '#porto-next',
-      prevEl: '#porto-prev',
-      disabledClass: 'is-disabled'
-    },
-    on: {
-      init: function(s) { updateCounter(s); },
-      slideChange: function(s) { updateCounter(s); },
-      click: function(s, e) {
-        var el = e.target;
-        while (el && el !== s.el) {
-          if (el.dataset && el.dataset.modal) {
-            var m = document.getElementById(el.dataset.modal);
-            if (m) m.style.display = 'flex';
-            return;
-          }
-          el = el.parentElement;
-        }
-      }
-    }
-  });
 
-  function updateCounter(s) {
-    var cur = document.getElementById('porto-cur');
-    var end = document.getElementById('porto-end');
-    if (!cur || !end) return;
-    var perV = s.params.slidesPerView || 1;
-    var from = s.realIndex + 1;
-    var to = Math.min(s.realIndex + perV, 16);
-    cur.textContent = from;
-    end.textContent = to;
-  }
-});
 
 
 
