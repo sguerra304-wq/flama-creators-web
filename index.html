@@ -2227,7 +2227,10 @@ de experiencia</div></div><div class="data"><div class="data-2"><div class="numb
 </style>
 
 
-<section id="portafolio" class="section gradient_bg">
+<section id="portafolio" style="background:linear-gradient(180deg,#0e0603 0%,#160a04 50%,#0d0d0d 100%);padding:80px 0 90px;position:relative;overflow:hidden">
+<!-- Ambient glow -->
+<div style="position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);width:900px;height:600px;background:radial-gradient(ellipse,rgba(255,69,0,.05) 0%,transparent 65%);pointer-events:none"></div>
+
 <style>
 /* ── PORTO CAROUSEL ───────────────────────────── */
 #porto-wrap {
@@ -2283,6 +2286,42 @@ de experiencia</div></div><div class="data"><div class="data-2"><div class="numb
   .porto-arr { width: 40px; height: 40px; font-size: 18px; }
 }
 </style>
+<style>
+/* ── PORTAFOLIO HEADER (standalone, no Webflow classes) ── */
+#porto-header {
+  max-width:900px;
+  margin:0 auto 52px;
+  padding:0 32px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:16px;
+}
+#porto-header h2 {
+  font-family:Montserrat,sans-serif;
+  font-size:clamp(32px,5vw,54px);
+  font-weight:900;
+  color:#fff;
+  line-height:1.05;
+  margin:0;
+}
+#porto-header p {
+  font-family:'DM Sans',sans-serif;
+  font-size:16px;
+  color:rgba(255,255,255,.5);
+  line-height:1.75;
+  max-width:640px;
+  margin:0;
+}
+</style>
+
+<div id="porto-header">
+  <span style="font-family:Montserrat,sans-serif;font-size:11px;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:#FF4500">MARCAS EN LLAMAS</span>
+  <h2>Spreading the fire,<br><span style="background:linear-gradient(135deg,#FF4500,#FFD700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">one brand at a time.</span></h2>
+  <p>Transformamos ideas en resultados medibles. Branding, redes sociales, diseño web, campañas publicitarias, estrategia digital y producción audiovisual. Más de 40 marcas encendidas en Lima.</p>
+</div>
+
+
 
 <div class="w-layout-blockcontainer container vertical w-container">
   <div class="block horizontal">
@@ -2313,6 +2352,7 @@ de experiencia</div></div><div class="data"><div class="data-2"><div class="numb
 <div id="modal-16" class="bg_modal"><div class="modal"><div class="modal_close"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M2 1.5L23.5 23M23.5 1.5L2 23" stroke="#F9FBFD" stroke-width="4"/></svg></div><img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bf5b16399489883204812_DSC05545.avif" loading="lazy" alt="Fotografía de portafolio de Flama Creators" class="card_img"/><div class="block"><h3 class="card_title">16. TD Synexx</h3><p class="text">Cobertura de eventos corporativos y producción audiovisual profesional, incluyendo Power Up 2025, premiaciones y eventos en múltiples locaciones.</p><div class="block horizontal low-gap left"><h4 class="text">Servicio</h4><p class="text">Creación de contenido</p></div><div class="block horizontal low-gap left"><h4 class="text">Año</h4><p class="text">Octubre 2025 - Diciembre 2025</p></div></div></div></div>
 
 <!-- Full-width Swiper carousel -->
+
 <div id="porto-wrap">
   <div id="porto-swiper" class="swiper">
     <div class="swiper-wrapper">
@@ -2338,6 +2378,7 @@ de experiencia</div></div><div class="data"><div class="data-2"><div class="numb
   <button id="porto-next" class="porto-arr" aria-label="Siguiente"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 29.541 22.323"><g transform="translate(0 1.014)"><path d="M115.445,20.633l9.311-10.148L115.445.338" transform="translate(-97.25 -0.338)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="3"/><line x1="27.506" transform="translate(0 10.148)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="3"/></g></svg></button>
   <p class="porto-counter"><span id="porto-cur">1</span>&ndash;<span id="porto-end">3</span> / 16</p>
 </div>
+
 
 </section>
 
@@ -2488,19 +2529,15 @@ details[open] .faq-q::after{transform:translateY(-50%) rotate(45deg)}
   z-index: 10;
   transition: opacity .4s;
 }
-/* iframe: rendered at 338px native → scaled to 268px
-   scale = 268/338 = 0.7929
-   native height 600px × 0.7929 = 475.7px ≈ 476px */
-#reel-iframe {
+/* Video element fills screen naturally */
+#reel-video {
   position: absolute;
-  top: 0; left: 0;
-  width: 338px;
-  height: 600px;
-  transform: scale(0.7929);
-  transform-origin: top left;
-  border: none;
-  opacity: 0;
-  transition: opacity .5s;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #000;
 }
 @media (max-width: 640px) {
   #reel-phone-wrap { width: 240px; }
@@ -2521,15 +2558,23 @@ details[open] .faq-q::after{transform:translateY(-50%) rotate(45deg)}
         <div id="reel-screen">
           <!-- Dynamic Island -->
           <div id="reel-island"></div>
-          <!-- Poster (shown until iframe loads) -->
+          <!-- Video element — plays Flama Creators reel directly -->
+          <video
+            id="reel-video"
+            src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/68489cda6045a5bc5bb6834c_video-flama-comprress-transcode.mp4"
+            poster=""
+            loop
+            playsinline
+            preload="none"
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#000"
+          ></video>
+          <!-- Poster overlay — click to play -->
           <div id="reel-poster">
-            <div style="width:64px;height:64px;background:linear-gradient(135deg,#FF4500,#FFD700);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(255,69,0,.55)">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M5 3l14 9-14 9V3z"/></svg>
+            <div style="width:68px;height:68px;background:linear-gradient(135deg,#FF4500,#FFD700);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(255,69,0,.55);transition:transform .2s">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M5 3l14 9-14 9V3z"/></svg>
             </div>
             <span style="font-family:Montserrat,sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4)">Ver Reel</span>
           </div>
-          <!-- Instagram embed — rendered at 338px native, scaled to fit screen -->
-          <iframe id="reel-iframe" src="" title="Reel Flama Creators en Instagram" frameborder="0" allowfullscreen scrolling="no"></iframe>
         </div>
       </div>
     </div>
@@ -2550,16 +2595,15 @@ details[open] .faq-q::after{transform:translateY(-50%) rotate(45deg)}
 <script>
 (function(){
   var poster = document.getElementById('reel-poster');
-  var iframe = document.getElementById('reel-iframe');
-  if (!poster || !iframe) return;
-  function loadReel() {
-    if (iframe.src) return; // already loaded
-    iframe.src = 'https://www.instagram.com/reel/DXHpo82AZom/embed/';
-    iframe.addEventListener('load', function() {
-      iframe.style.opacity = '1';
-      poster.style.opacity = '0';
-      poster.style.pointerEvents = 'none';
-    }, { once: true });
+  var video = document.getElementById('reel-video');
+  if (!poster || !video) return;
+  poster.addEventListener('click', function() {
+    video.play();
+    poster.style.opacity = '0';
+    poster.style.pointerEvents = 'none';
+  });
+  // Hover effect on play button
+  poster.style.cursor = 'pointer';
     // Fallback: show after 2.5s even if load event doesn't fire
     setTimeout(function() {
       iframe.style.opacity = '1';
