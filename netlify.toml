@@ -1,0 +1,111 @@
+[build]
+  publish = "."
+
+# Security headers (complementary to _headers file)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# Clean URL redirects — short slugs → full filenames
+[[redirects]]
+  from = "/social-media"
+  to = "/social-media-lima.html"
+  status = 301
+
+[[redirects]]
+  from = "/redes-sociales"
+  to = "/social-media-lima.html"
+  status = 301
+
+[[redirects]]
+  from = "/diseno-web"
+  to = "/diseno-web-lima.html"
+  status = 301
+
+[[redirects]]
+  from = "/paginas-web"
+  to = "/diseno-web-lima.html"
+  status = 301
+
+[[redirects]]
+  from = "/produccion-audiovisual"
+  to = "/produccion-audiovisual-lima.html"
+  status = 301
+
+[[redirects]]
+  from = "/audiovisual"
+  to = "/produccion-audiovisual-lima.html"
+  status = 301
+
+[[redirects]]
+  from = "/branding"
+  to = "/branding-lima.html"
+  status = 301
+
+[[redirects]]
+  from = "/identidad-de-marca"
+  to = "/branding-lima.html"
+  status = 301
+
+# Blog redirects
+[[redirects]]
+  from = "/blog/cuanto-cuesta-agencia-marketing"
+  to = "/cuanto-cuesta-agencia-marketing-digital-lima.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog/como-elegir-agencia-redes-sociales"
+  to = "/como-elegir-agencia-redes-sociales-lima.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog/community-management-inhouse-vs-agencia"
+  to = "/community-management-inhouse-vs-agencia-lima.html"
+  status = 301
+
+# Legacy Webflow redirects (if any old URLs were indexed)
+[[redirects]]
+  from = "/services"
+  to = "/#services"
+  status = 301
+
+[[redirects]]
+  from = "/portafolio"
+  to = "/#portafolio"
+  status = 301
+
+[[redirects]]
+  from = "/contacto"
+  to = "/#Form"
+  status = 301
+
+# 404 fallback
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404

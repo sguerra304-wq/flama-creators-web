@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Página no encontrada — Flama Creators</title>
+  <meta name="description" content="Esta página no existe. Vuelve al inicio o explora los servicios de Flama Creators en Lima."/>
+  <meta name="robots" content="noindex, follow"/>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WXQKD3C0Y0"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WXQKD3C0Y0');</script>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --c-bg: #0D0D0D;
+      --c-surface: #141414;
+      --c-border: rgba(255,255,255,.08);
+      --c-text: rgba(255,255,255,.82);
+      --c-muted: rgba(255,255,255,.45);
+      --c-accent: #FF4500;
+      --g-fire: linear-gradient(135deg,#FF4500 0%,#FF6B35 50%,#FFD700 100%);
+      --font-head: 'Montserrat', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+    html, body { height: 100%; }
+    body {
+      background: var(--c-bg);
+      color: var(--c-text);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+    }
+    a { color: inherit; text-decoration: none; }
+    /* NAV */
+    .nav { background: rgba(13,13,13,.95); border-bottom: 1px solid var(--c-border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo img { height: 32px; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { font-size: 14px; color: var(--c-muted); transition: color .2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta { background: var(--c-accent); color: #fff !important; font-family: var(--font-head); font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 9px 18px; border-radius: 100px; transition: opacity .2s !important; }
+    .nav-cta:hover { opacity: .85; }
+    /* 404 MAIN */
+    .error-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+    .error-inner { text-align: center; max-width: 560px; }
+    .fire-num {
+      font-family: var(--font-head);
+      font-size: clamp(96px, 20vw, 160px);
+      font-weight: 900;
+      line-height: 1;
+      background: var(--g-fire);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -4px;
+      margin-bottom: 8px;
+    }
+    .error-title {
+      font-family: var(--font-head);
+      font-size: clamp(20px, 4vw, 28px);
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 14px;
+      letter-spacing: -.3px;
+    }
+    .error-desc {
+      font-size: 16px;
+      color: var(--c-muted);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .error-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-fire {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--g-fire);
+      padding: 13px 24px;
+      border-radius: 100px;
+      transition: opacity .2s, transform .2s;
+    }
+    .btn-fire:hover { opacity: .9; transform: translateY(-2px); }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.6);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.15);
+      padding: 13px 24px;
+      border-radius: 100px;
+      transition: all .2s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,.4); color: #fff; }
+    /* QUICK LINKS */
+    .quick-links { margin-top: 48px; }
+    .quick-title { font-size: 12px; font-family: var(--font-head); font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--c-muted); margin-bottom: 16px; }
+    .quick-grid { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+    .quick-link {
+      font-size: 13px;
+      color: rgba(255,255,255,.5);
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      padding: 8px 16px;
+      border-radius: 100px;
+      transition: all .2s;
+    }
+    .quick-link:hover { color: #fff; border-color: rgba(255,69,0,.4); }
+    /* FOOTER */
+    .footer { border-top: 1px solid var(--c-border); padding: 24px; text-align: center; font-size: 13px; color: var(--c-muted); }
+    .footer a { color: var(--c-muted); transition: color .2s; }
+    .footer a:hover { color: #fff; }
+    @media (max-width: 500px) {
+      .nav-links { display: none; }
+      .error-actions { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav" role="navigation" aria-label="Navegación principal">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="Flama Creators — Inicio">
+      <img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/684752b79c0c9ef8c2f38f70_Logo%20blanco.svg" alt="Flama Creators" width="120" height="32"/>
+    </a>
+    <div class="nav-links">
+      <a href="/#services">Servicios</a>
+      <a href="/#portafolio">Portafolio</a>
+      <a href="/#Form" class="nav-cta">Cotizar</a>
+    </div>
+  </div>
+</nav>
+
+<main class="error-wrap" role="main">
+  <div class="error-inner">
+    <div class="fire-num" aria-hidden="true">404</div>
+    <h1 class="error-title">Esta página se apagó.</h1>
+    <p class="error-desc">La URL que buscas no existe o fue movida.<br/>Pero el fuego sigue ardiendo por acá.</p>
+    <div class="error-actions">
+      <a href="/" class="btn-fire">Ir al inicio →</a>
+      <a href="https://wa.me/51900972068?text=Hola%20Flama%2C%20tengo%20una%20consulta" target="_blank" rel="noopener" class="btn-ghost">Escribirnos</a>
+    </div>
+    <div class="quick-links">
+      <div class="quick-title">O explora nuestros servicios</div>
+      <div class="quick-grid">
+        <a href="/social-media-lima.html" class="quick-link">Social Media</a>
+        <a href="/diseno-web-lima.html" class="quick-link">Diseño Web</a>
+        <a href="/produccion-audiovisual-lima.html" class="quick-link">Audiovisual</a>
+        <a href="/branding-lima.html" class="quick-link">Branding</a>
+        <a href="/#portafolio" class="quick-link">Portafolio</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <p>© 2026 <a href="/">Flama Creators</a> — Lima, Perú · <a href="mailto:gerencia@flamacreators.com">gerencia@flamacreators.com</a></p>
+</footer>
+
+</body>
+</html>
