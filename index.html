@@ -3408,70 +3408,54 @@ $("[data-lenis-toggle]").on("click", function () {
 
 
 
-$(".slider-main_component").each(function (index) {
-  let loopMode = false;
-  if ($(this).attr("loop-mode") === "true") {
-    loopMode = true;
-  }
-  let sliderDuration = 300;
-  if ($(this).attr("slider-duration") !== undefined) {
-    sliderDuration = +$(this).attr("slider-duration");
-  }
-  const swiper = new Swiper($(this).find(".swiper")[0], {
-    speed: sliderDuration,
-    loop: loopMode,
-    autoHeight: false,
-    centeredSlides: loopMode,
-    followFinger: true,
-    freeMode: false,
-    slideToClickedSlide: false,
-    slidesPerView: "1",
-    spaceBetween: "5%",
-    rewind: false,
-    mousewheel: {
-      forceToAxis: true
-    },
-    keyboard: {
-      enabled: true,
-      onlyInViewport: true
-    },
-    breakpoints: {
-      // mobile landscape
-      480: {
-        slidesPerView: 1,
-        spaceBetween: "4%"
+// Swiper portfolio init — uses window load so deferred scripts (jQuery, Swiper CDN) are ready
+window.addEventListener('load', function () {
+  document.querySelectorAll('.slider-main_component').forEach(function (component) {
+    var loopMode = component.getAttribute('loop-mode') === 'true';
+    var sliderDuration = parseInt(component.getAttribute('slider-duration'), 10) || 300;
+    var swiperEl = component.querySelector('.swiper');
+    if (!swiperEl || typeof Swiper === 'undefined') return;
+
+    new Swiper(swiperEl, {
+      speed: sliderDuration,
+      loop: loopMode,
+      autoHeight: false,
+      centeredSlides: loopMode,
+      followFinger: true,
+      freeMode: false,
+      slideToClickedSlide: false,
+      slidesPerView: 1,
+      spaceBetween: 20,
+      rewind: false,
+      grabCursor: true,
+      mousewheel: { forceToAxis: true },
+      keyboard: { enabled: true, onlyInViewport: true },
+      breakpoints: {
+        480: { slidesPerView: 1,  spaceBetween: 16 },
+        768: { slidesPerView: 2,  spaceBetween: 20 },
+        992: { slidesPerView: 3,  spaceBetween: 24 }
       },
-      // tablet
-      768: {
-        slidesPerView: 2,
-        spaceBetween: "4%"
+      pagination: {
+        el: component.querySelector('.swiper-bullet-wrapper'),
+        bulletActiveClass: 'is-active',
+        bulletClass: 'swiper-bullet',
+        bulletElement: 'button',
+        clickable: true
       },
-      // desktop
-      992: {
-        slidesPerView: 3,
-        spaceBetween: "5%"
-      }
-    },
-    pagination: {
-      el: $(this).find(".swiper-bullet-wrapper")[0],
-      bulletActiveClass: "is-active",
-      bulletClass: "swiper-bullet",
-      bulletElement: "button",
-      clickable: true
-    },
-    navigation: {
-      nextEl: $(this).find(".swiper-next")[0],
-      prevEl: $(this).find(".swiper-prev")[0],
-      disabledClass: "is-disabled"
-    },
-    scrollbar: {
-      el: $(this).find(".swiper-drag-wrapper")[0],
-      draggable: true,
-      dragClass: "swiper-drag",
-      snapOnRelease: true
-    },
-    slideActiveClass: "is-active",
-    slideDuplicateActiveClass: "is-active"
+      navigation: {
+        nextEl: component.querySelector('.swiper-next'),
+        prevEl: component.querySelector('.swiper-prev'),
+        disabledClass: 'is-disabled'
+      },
+      scrollbar: {
+        el: component.querySelector('.swiper-drag-wrapper'),
+        draggable: true,
+        dragClass: 'swiper-drag',
+        snapOnRelease: true
+      },
+      slideActiveClass: 'is-active',
+      slideDuplicateActiveClass: 'is-active'
+    });
   });
 });
 
