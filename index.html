@@ -2442,39 +2442,137 @@ details[open] .faq-q::after{transform:translateY(-50%) rotate(45deg)}
 </style>
 
 <!-- ── REEL DESTACADO ─────────────────────────────────────── -->
+<style>
+/* Reel phone mockup — scale trick so Instagram renders at native width */
+#reel-phone-wrap {
+  flex-shrink: 0;
+  position: relative;
+  /* outer phone = 290px wide */
+  width: 290px;
+}
+#reel-phone-frame {
+  background: linear-gradient(145deg,#1c1c1e,#2a2a2c);
+  border: 2.5px solid rgba(255,255,255,.18);
+  border-radius: 48px;
+  padding: 14px 11px;
+  box-shadow:
+    0 60px 100px rgba(0,0,0,.75),
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 0 0 1px rgba(255,255,255,.04);
+  position: relative;
+}
+/* Side buttons */
+#reel-phone-frame::before {
+  content:'';
+  position:absolute;
+  right:-4px; top:80px;
+  width:3px; height:60px;
+  background:rgba(255,255,255,.12);
+  border-radius:0 3px 3px 0;
+  box-shadow: 0 80px 0 rgba(255,255,255,.12);
+}
+#reel-phone-frame::after {
+  content:'';
+  position:absolute;
+  left:-4px; top:100px;
+  width:3px; height:36px;
+  background:rgba(255,255,255,.12);
+  border-radius:3px 0 0 3px;
+  box-shadow: 0 52px 0 rgba(255,255,255,.12);
+}
+/* Screen area: 268px wide, 476px tall */
+#reel-screen {
+  background: #000;
+  border-radius: 36px;
+  overflow: hidden;
+  width: 268px;
+  height: 476px;
+  position: relative;
+}
+/* Dynamic Island */
+#reel-island {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 84px;
+  height: 26px;
+  background: #1c1c1e;
+  border-radius: 14px;
+  z-index: 20;
+  pointer-events: none;
+}
+/* Poster overlay */
+#reel-poster {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg,#1a0800 0%,#0d0d0d 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  cursor: pointer;
+  z-index: 10;
+  transition: opacity .4s;
+}
+/* iframe: rendered at 338px native → scaled to 268px
+   scale = 268/338 = 0.7929
+   native height 600px × 0.7929 = 475.7px ≈ 476px */
+#reel-iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 338px;
+  height: 600px;
+  transform: scale(0.7929);
+  transform-origin: top left;
+  border: none;
+  opacity: 0;
+  transition: opacity .5s;
+}
+@media (max-width: 640px) {
+  #reel-phone-wrap { width: 240px; }
+  #reel-screen { width: 218px; height: 388px; }
+  /* scale = 218/338 = 0.645; 600×0.645=387 */
+  #reel-iframe { transform: scale(0.645); }
+}
+</style>
+
 <section id="reel-destacado" style="background:#0D0D0D;padding:80px 0;overflow:hidden;position:relative">
-  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(255,69,0,.07) 0%,transparent 65%);pointer-events:none;border-radius:50%"></div>
-  <div class="container" style="display:flex;align-items:center;justify-content:center;gap:72px;flex-wrap:wrap">
-    <!-- Phone mockup with lazy-loaded Instagram embed -->
-    <div id="reel-phone" style="flex-shrink:0;position:relative;width:270px">
-      <!-- Phone frame -->
-      <div style="background:#111;border:3px solid rgba(255,255,255,.12);border-radius:42px;padding:12px;box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.04)">
-        <div style="background:#000;border-radius:32px;overflow:hidden;aspect-ratio:9/16;position:relative">
-          <!-- Poster + play button (shown until user clicks) -->
-          <div id="reel-poster" style="position:absolute;inset:0;background:linear-gradient(160deg,#1a0800 0%,#0d0d0d 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;cursor:pointer;z-index:2;transition:opacity .3s">
-            <div style="width:60px;height:60px;background:linear-gradient(135deg,#FF4500,#FFD700);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 0 32px rgba(255,69,0,.5)">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M5 3l14 9-14 9V3z"/></svg>
+  <!-- Ambient glow -->
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:600px;background:radial-gradient(ellipse,rgba(255,69,0,.06) 0%,transparent 65%);pointer-events:none"></div>
+  <div class="container" style="display:flex;align-items:center;justify-content:center;gap:80px;flex-wrap:wrap">
+
+    <!-- ── Phone mockup ── -->
+    <div id="reel-phone-wrap">
+      <div id="reel-phone-frame">
+        <div id="reel-screen">
+          <!-- Dynamic Island -->
+          <div id="reel-island"></div>
+          <!-- Poster (shown until iframe loads) -->
+          <div id="reel-poster">
+            <div style="width:64px;height:64px;background:linear-gradient(135deg,#FF4500,#FFD700);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(255,69,0,.55)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M5 3l14 9-14 9V3z"/></svg>
             </div>
-            <span style="font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5)">Ver Reel</span>
+            <span style="font-family:Montserrat,sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4)">Ver Reel</span>
           </div>
-          <!-- iframe loaded on click -->
-          <iframe id="reel-iframe" src="" title="Reel Flama Creators en Instagram" frameborder="0" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;opacity:0;transition:opacity .4s"></iframe>
+          <!-- Instagram embed — rendered at 338px native, scaled to fit screen -->
+          <iframe id="reel-iframe" src="" title="Reel Flama Creators en Instagram" frameborder="0" allowfullscreen scrolling="no"></iframe>
         </div>
       </div>
-      <!-- Notch -->
-      <div style="position:absolute;top:20px;left:50%;transform:translateX(-50%);width:60px;height:18px;background:#111;border-radius:0 0 12px 12px;z-index:10"></div>
     </div>
 
-    <!-- Text side -->
+    <!-- ── Text side ── -->
     <div style="max-width:440px">
       <p style="font-family:Montserrat,sans-serif;font-size:11px;font-weight:800;letter-spacing:4px;color:#FF4500;text-transform:uppercase;margin:0 0 14px">Nuestro contenido</p>
       <h2 style="font-family:Montserrat,sans-serif;font-size:clamp(28px,4vw,46px);font-weight:900;color:#fff;line-height:1.05;margin:0 0 18px">Así se ve el fuego<br/><span style="background:linear-gradient(135deg,#FF4500,#FFD700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">en movimiento.</span></h2>
       <p style="font-family:'DM Sans',sans-serif;font-size:16px;color:rgba(255,255,255,.55);line-height:1.8;margin:0 0 32px">Creamos contenido que para el scroll, genera conversaciones y convierte seguidores en clientes. Esto es solo una muestra de lo que hacemos para marcas en Lima.</p>
       <div style="display:flex;gap:14px;flex-wrap:wrap">
         <a href="https://wa.me/51900972068?text=Hola%20Flama%2C%20vi%20su%20reel%20y%20quiero%20un%20contenido%20as%C3%AD%20para%20mi%20marca" target="_blank" rel="noopener" class="btn-fire" style="font-family:Montserrat,sans-serif;font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,#FF4500,#FF6B35,#FFD700);padding:14px 26px;border-radius:100px;text-decoration:none;display:inline-flex;align-items:center;gap:8px">Quiero esto para mi marca →</a>
-        <a href="https://www.instagram.com/flamacreators" target="_blank" rel="noopener" style="font-family:Montserrat,sans-serif;font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5);background:transparent;border:1px solid rgba(255,255,255,.15);padding:14px 26px;border-radius:100px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s">Ver Instagram</a>
+        <a href="https://www.instagram.com/flama.creators" target="_blank" rel="noopener" style="font-family:Montserrat,sans-serif;font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5);background:transparent;border:1px solid rgba(255,255,255,.15);padding:14px 26px;border-radius:100px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s">Ver Instagram</a>
       </div>
     </div>
+
   </div>
 </section>
 <script>
@@ -2483,20 +2581,27 @@ details[open] .faq-q::after{transform:translateY(-50%) rotate(45deg)}
   var iframe = document.getElementById('reel-iframe');
   if (!poster || !iframe) return;
   function loadReel() {
+    if (iframe.src) return; // already loaded
     iframe.src = 'https://www.instagram.com/reel/DXHpo82AZom/embed/';
-    iframe.style.opacity = '1';
-    poster.style.opacity = '0';
-    poster.style.pointerEvents = 'none';
+    iframe.addEventListener('load', function() {
+      iframe.style.opacity = '1';
+      poster.style.opacity = '0';
+      poster.style.pointerEvents = 'none';
+    }, { once: true });
+    // Fallback: show after 2.5s even if load event doesn't fire
+    setTimeout(function() {
+      iframe.style.opacity = '1';
+      poster.style.opacity = '0';
+      poster.style.pointerEvents = 'none';
+    }, 2500);
   }
   poster.addEventListener('click', loadReel);
-  // Auto-load when scrolled into view (IntersectionObserver)
+  // Auto-load when section enters viewport (threshold lower = triggers sooner)
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting) { loadReel(); io.disconnect(); }
-      });
-    }, { threshold: 0.4 });
-    io.observe(poster);
+      entries.forEach(function(e) { if (e.isIntersecting) { loadReel(); io.disconnect(); } });
+    }, { threshold: 0.25 });
+    io.observe(document.getElementById('reel-destacado'));
   }
 })();
 </script>
