@@ -1,0 +1,39 @@
+{
+  "redirects": [
+    {
+      "source": "/social-media",
+      "destination": "/social-media-lima.html",
+      "permanent": true
+    },
+    {
+      "source": "/diseno-web",
+      "destination": "/diseno-web-lima.html",
+      "permanent": true
+    },
+    {
+      "source": "/branding",
+      "destination": "/branding-lima.html",
+      "permanent": true
+    },
+    {
+      "source": "/produccion-audiovisual",
+      "destination": "/produccion-audiovisual-lima.html",
+      "permanent": true
+    },
+    {
+      "source": "/portafolio",
+      "destination": "/#portafolio",
+      "permanent": false
+    },
+    {
+      "source": "/servicios",
+      "destination": "/#services",
+      "permanent": false
+    },
+    {
+      "source": "/blog",
+      "destination": "/#blog",
+      "permanent": false
+    }
+  ]
+}
