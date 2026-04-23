@@ -1,84 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
-  <!-- HOME -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://flamacreators.com/</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="es-PE" href="https://flamacreators.com/"/>
   </url>
-
-  <!-- PÁGINAS DE SERVICIOS -->
   <url>
     <loc>https://flamacreators.com/social-media-lima.html</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://flamacreators.com/diseno-web-lima.html</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-
-  <url>
-    <loc>https://flamacreators.com/produccion-audiovisual-lima.html</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
   <url>
     <loc>https://flamacreators.com/branding-lima.html</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-
-  <!-- BLOG / ARTÍCULOS SEO -->
+  <url>
+    <loc>https://flamacreators.com/produccion-audiovisual-lima.html</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://flamacreators.com/cuanto-cuesta-agencia-marketing-digital-lima.html</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
-
-  <url>
-    <loc>https://flamacreators.com/como-elegir-agencia-redes-sociales-lima.html</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
   <url>
     <loc>https://flamacreators.com/community-management-inhouse-vs-agencia-lima.html</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- SECCIONES DE LA HOME -->
-  <url>
-    <loc>https://flamacreators.com/#services</loc>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
-    <loc>https://flamacreators.com/#portafolio</loc>
-    <changefreq>weekly</changefreq>
+    <loc>https://flamacreators.com/como-elegir-agencia-redes-sociales-lima.html</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
-    <loc>https://flamacreators.com/#Form</loc>
+    <loc>https://flamacreators.com/instagram-para-empresas-lima.html</loc>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
-
 </urlset>
