@@ -177,6 +177,40 @@ footer.flama-footer{background:#0D0D0D;border-top:1px solid var(--c-border);padd
   .inc-grid,.process-steps{grid-template-columns:1fr;}
   .stats-row{grid-template-columns:1fr 1fr;}
 }
+
+  /* ── ENHANCED MOBILE for SP LAYOUT ── */
+  @media(max-width:768px){
+    .sp-wrap { padding: 0 16px; }
+    .sp-hero { padding: 48px 0 40px; }
+    .sp-h1 { font-size: clamp(28px, 7vw, 40px); margin-bottom: 16px; }
+    .sp-lead { font-size: 15px; margin-bottom: 24px; }
+    .sp-btns { gap: 10px; }
+    .sp-btn-primary { font-size: 11px; padding: 12px 20px; }
+    .sp-includes { padding: 48px 0; }
+    .sp-h2 { font-size: clamp(22px, 5vw, 32px); margin-bottom: 32px; }
+    .sp-section-label { letter-spacing: 2px; }
+    .sp-list-item { padding: 20px 0; gap: 0 16px; }
+    .sp-list-title { font-size: 15px; }
+    .sp-list-desc { font-size: 13px; }
+    .sp-stats { padding: 40px 0; }
+    .sp-stat-num { font-size: clamp(28px, 7vw, 40px); }
+    .sp-process { padding: 48px 0; }
+    .sp-step { padding: 24px 20px; }
+    .sp-step-title { font-size: 15px; }
+    .sp-step-desc { font-size: 13px; }
+    .sp-cta { padding: 48px 0; }
+    .sp-cta-h { font-size: clamp(22px, 5vw, 32px); }
+    .sp-cta-sub { font-size: 15px; }
+    .sp-btn-primary { width: 100%; justify-content: center; }
+  }
+  @media(max-width:480px){
+    .sp-hero { padding: 36px 0 32px; }
+    .sp-wrap { padding: 0 14px; }
+    .sp-eyebrow { font-size: 11px; letter-spacing: 1.5px; }
+    .sp-stats-grid { grid-template-columns: 1fr 1fr; }
+    .sp-list-item { grid-template-columns: 32px 1fr; }
+  }
+
 </style></head>
 <body>
 <a href="/#hero" style="position:absolute;top:-40px;left:16px;background:#FF4500;color:#fff;padding:8px 16px;border-radius:0 0 8px 8px;font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;z-index:9999;transition:top .2s;text-decoration:none" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Saltar al contenido</a>
