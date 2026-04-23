@@ -219,96 +219,301 @@ footer.flama-footer{background:#0D0D0D;border-top:1px solid var(--c-border);padd
   </div>
 </header>
 <main>
-  <div class="srv-hero" data-reveal>
-    <p class="srv-hero-eyebrow">🎬 Producción Audiovisual</p>
-    <h1>El algoritmo premia el video.<br/><span class="fire">Tu competencia</span><br/>ya lo sabe.</h1>
-    <p>Equipo de producción in-house en Lima: dirección, cámara, edición y motion graphics bajo un mismo techo. Sin agencias intermediarias, sin demoras innecesarias, sin videos genéricos que parecen de stock.</p>
-    <div class="srv-hero-btns">
-      <a href="https://wa.me/51900972068?text=Hola%20Flama%2C%20quiero%20cotizar%20producci%C3%B3n%20audiovisual" target="_blank" rel="noopener" class="btn-primary">Cotizar producción →</a>
-      <a href="/#videos-portafolio" class="btn-outline">Ver nuestros videos</a>
-    </div>
-  </div>
 
-  <div class="srv-section-full">
-    <div class="inner">
-      <p class="section-eyebrow">Qué producimos</p>
-      <h2 class="section-title">Contenido que la gente<br/><span class="fire">no puede ignorar.</span></h2>
-      <p class="section-sub">Desde un reel de 15 segundos hasta un spot publicitario completo. La escala cambia, el estándar no.</p>
-      <div class="inc-grid">
-        <div class="inc-card">
-          <div class="inc-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
-          <h3>Reels & TikToks</h3>
-          <p>Contenido vertical nativo para Instagram y TikTok. Guion, grabación y edición pensados para las primeras 3 segundos — porque si no enganchas ahí, perdiste.</p>
+<style id="srv-premium">
+/* ── RESET & BASE ─── */
+.srv-wrap { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+@media(max-width:600px){ .srv-wrap { padding: 0 20px; } }
+
+/* ── HERO ─── */
+.sp-hero {
+  padding: 80px 0 72px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.sp-hero-inner {
+  display: grid; grid-template-columns: 1fr 420px; gap: 48px; align-items: center;
+}
+.sp-eyebrow {
+  font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.35);
+  margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+}
+.sp-eyebrow::before {
+  content:''; width: 24px; height: 1px; background: rgba(255,255,255,.2);
+}
+.sp-h1 {
+  font-family: Montserrat, sans-serif; font-weight: 900;
+  font-size: clamp(34px, 4.5vw, 54px); color: #fff;
+  line-height: 1.08; letter-spacing: -.5px; margin: 0 0 24px;
+}
+.sp-h1 em { font-style: normal; color: rgba(255,255,255,.35); }
+.sp-lead {
+  font-family: 'DM Sans', sans-serif; font-size: 16px;
+  color: rgba(255,255,255,.5); line-height: 1.75; max-width: 480px; margin: 0 0 32px;
+}
+.sp-btns { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.sp-btn-primary {
+  font-family: Montserrat, sans-serif; font-size: 12px; font-weight: 800;
+  letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;
+  color: #0D0D0D; background: #fff; padding: 13px 24px; border-radius: 100px;
+  transition: background .2s, color .2s;
+}
+.sp-btn-primary:hover { background: rgba(255,255,255,.85); }
+.sp-btn-ghost {
+  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+  text-decoration: none; color: rgba(255,255,255,.5);
+  border-bottom: 1px solid rgba(255,255,255,.2); padding-bottom: 2px;
+  transition: color .2s, border-color .2s;
+}
+.sp-btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,.6); }
+
+/* Hero photo */
+.sp-hero-img {
+  border-radius: 16px; overflow: hidden; aspect-ratio: 4/3;
+  background: #111; border: 1px solid rgba(255,255,255,.07);
+  position: relative;
+}
+.sp-hero-img img { width:100%; height:100%; object-fit:cover; display:block; }
+.sp-hero-img-placeholder {
+  width:100%; height:100%; min-height:300px;
+  background: linear-gradient(160deg,#1a1a1a 0%,#111 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+
+@media(max-width:860px){
+  .sp-hero-inner { grid-template-columns:1fr; }
+  .sp-hero-img { display: none; }
+}
+
+/* ── INCLUDES LIST ─── */
+.sp-includes { padding: 72px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+.sp-section-label {
+  font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500;
+  letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.3);
+  margin-bottom: 32px;
+}
+.sp-h2 {
+  font-family: Montserrat, sans-serif; font-weight: 900;
+  font-size: clamp(26px, 3.5vw, 40px); color: #fff;
+  line-height: 1.1; letter-spacing: -.4px; margin: 0 0 48px;
+}
+.sp-h2 strong { color: rgba(255,255,255,.3); font-weight: 900; }
+
+/* Numbered list */
+.sp-list { list-style: none; padding: 0; margin: 0; }
+.sp-list-item {
+  display: grid; grid-template-columns: 48px 1fr 1fr;
+  gap: 0 32px; padding: 28px 0;
+  border-top: 1px solid rgba(255,255,255,.06);
+  align-items: start;
+}
+.sp-list-item:last-child { border-bottom: 1px solid rgba(255,255,255,.06); }
+.sp-list-num {
+  font-family: Montserrat, sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: 1px; color: rgba(255,255,255,.2); padding-top: 3px;
+}
+.sp-list-title {
+  font-family: Montserrat, sans-serif; font-size: 16px; font-weight: 700;
+  color: rgba(255,255,255,.85); letter-spacing: -.1px;
+}
+.sp-list-desc {
+  font-family: 'DM Sans', sans-serif; font-size: 14px;
+  color: rgba(255,255,255,.4); line-height: 1.65;
+}
+@media(max-width:700px){
+  .sp-list-item { grid-template-columns: 36px 1fr; }
+  .sp-list-desc { grid-column: 2; margin-top: 6px; }
+}
+
+/* ── STATS ─── */
+.sp-stats { padding: 64px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+.sp-stats-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.sp-stat {
+  padding: 0 32px;
+  border-right: 1px solid rgba(255,255,255,.06);
+}
+.sp-stat:first-child { padding-left: 0; }
+.sp-stat:last-child { border-right: none; padding-right: 0; }
+.sp-stat-num {
+  font-family: Montserrat, sans-serif; font-weight: 900;
+  font-size: clamp(36px, 4vw, 52px); color: #fff;
+  line-height: 1; letter-spacing: -1px; margin-bottom: 8px;
+}
+.sp-stat-label {
+  font-family: 'DM Sans', sans-serif; font-size: 13px;
+  color: rgba(255,255,255,.4); line-height: 1.5;
+}
+@media(max-width:700px){
+  .sp-stats-grid { grid-template-columns: 1fr 1fr; gap: 32px 0; }
+  .sp-stat { border-right: none; padding: 0; }
+}
+
+/* ── PROCESS ─── */
+.sp-process { padding: 72px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+.sp-process-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: rgba(255,255,255,.05); border-radius: 16px; overflow: hidden;
+  margin-top: 40px;
+}
+.sp-step {
+  background: #0D0D0D; padding: 36px 28px;
+  transition: background .25s;
+}
+.sp-step:hover { background: #111; }
+.sp-step-num {
+  font-family: Montserrat, sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; color: rgba(255,255,255,.2); margin-bottom: 16px;
+}
+.sp-step-title {
+  font-family: Montserrat, sans-serif; font-size: 17px; font-weight: 800;
+  color: rgba(255,255,255,.85); margin-bottom: 10px; line-height: 1.2;
+}
+.sp-step-desc {
+  font-family: 'DM Sans', sans-serif; font-size: 14px;
+  color: rgba(255,255,255,.4); line-height: 1.65;
+}
+@media(max-width:700px){
+  .sp-process-grid { grid-template-columns: 1fr; }
+}
+
+/* ── CTA ─── */
+.sp-cta {
+  padding: 80px 0; text-align: center;
+}
+.sp-cta-label {
+  font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
+  letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.25);
+  margin-bottom: 20px;
+}
+.sp-cta-h {
+  font-family: Montserrat, sans-serif; font-weight: 900;
+  font-size: clamp(28px, 4vw, 44px); color: #fff;
+  line-height: 1.1; letter-spacing: -.4px; margin-bottom: 16px;
+}
+.sp-cta-sub {
+  font-family: 'DM Sans', sans-serif; font-size: 16px;
+  color: rgba(255,255,255,.4); margin-bottom: 36px;
+}
+</style>
+
+  <div class="srv-wrap">
+
+    <!-- HERO -->
+    <section class="sp-hero">
+      <div class="sp-hero-inner">
+        <div>
+          <p class="sp-eyebrow">Servicio · Producción Audiovisual</p>
+          <h1 class="sp-h1">El algoritmo premia el video.<br><em>Nosotros te damos el video.</em></h1>
+          <p class="sp-lead">El contenido audiovisual ya no es opcional — es el formato con mayor alcance orgánico en todas las plataformas. Producimos videos que se ven, se comparten y convierten en Lima.</p>
+          <div class="sp-btns">
+            <a href="https://wa.me/51900972068?text=Hola%20Flama%2C%20quiero%20cotizar%20produccion%20audiovisual" target="_blank" rel="noopener" class="sp-btn-primary">Cotizar ahora →</a>
+            <a href="/#portafolio" class="sp-btn-ghost">Ver portafolio</a>
+          </div>
         </div>
-        <div class="inc-card">
-          <div class="inc-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div>
-          <h3>Spots publicitarios</h3>
-          <p>Videos para Meta Ads, YouTube y TV. Con brief creativo, storyboard, producción y entrega en los formatos que necesita cada plataforma.</p>
-        </div>
-        <div class="inc-card">
-          <div class="inc-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          <h3>Videos corporativos</h3>
-          <p>Presentación de empresa, testimoniales de clientes, videos de producto y cultura organizacional. El tipo de contenido que construye confianza antes de que nadie te conozca.</p>
-        </div>
-        <div class="inc-card">
-          <div class="inc-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></div>
-          <h3>Cobertura de eventos</h3>
-          <p>Filmación y edición de lanzamientos, activaciones, conferencias y eventos de marca. Entrega de highlight reel en 48 horas.</p>
-        </div>
-        <div class="inc-card">
-          <div class="inc-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48 2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48 2.83-2.83"/></svg></div>
-          <h3>Motion graphics</h3>
-          <p>Animaciones, intros de marca, infografías animadas y motion para redes. Ideal para explicar conceptos complejos o darle vida a tu identidad visual.</p>
-        </div>
-        <div class="inc-card">
-          <div class="inc-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
-          <h3>Contenido de producto</h3>
-          <p>Videos para e-commerce, demos de producto y unboxing. Formato pensado para vender: ángulos, lighting y ritmo de edición que convierte.</p>
+        <div class="sp-hero-img">
+          <div class="sp-hero-img-placeholder" style="background:linear-gradient(160deg,#0a0500 0%,#150a00 50%,#0d0d0d 100%)">
+            <!-- imagen del portafolio aquí -->
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="srv-section">
-    <p class="section-eyebrow">Nuestro equipo</p>
-    <h2 class="section-title">In-house.<br/><span class="fire">Sin intermediarios.</span></h2>
-    <div class="stats-row">
-      <div class="stat-item"><div class="stat-num">600+</div><div class="stat-label">Videos producidos<br/>para marcas peruanas</div></div>
-      <div class="stat-item"><div class="stat-num">48h</div><div class="stat-label">Entrega de<br/>reels y shorts</div></div>
-      <div class="stat-item"><div class="stat-num">4K</div><div class="stat-label">Resolución máxima<br/>en producción</div></div>
-      <div class="stat-item"><div class="stat-num">+40</div><div class="stat-label">Marcas con<br/>estrategia visual activa</div></div>
-    </div>
-  </div>
+    <!-- INCLUDES -->
+    <section class="sp-includes">
+      <p class="sp-section-label">Lo que incluye</p>
+      <h2 class="sp-h2">Producción completa, de la idea a la pantalla.</h2>
+      <p style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(255,255,255,.4);margin-bottom:40px;max-width:560px;line-height:1.7">Nos encargamos de todo: concepto, grabación, edición y entrega en los formatos exactos para cada plataforma.</p>
+      <ul class="sp-list">
+        <li class="sp-list-item">
+          <span class="sp-list-num">01</span>
+          <span class="sp-list-title">Reels e Instagram</span>
+          <span class="sp-list-desc">Producción de reels de 15 a 60 segundos, editados con ritmo, texto animado y música licenciada.</span>
+        </li>
+        <li class="sp-list-item">
+          <span class="sp-list-num">02</span>
+          <span class="sp-list-title">TikTok</span>
+          <span class="sp-list-desc">Contenido nativo para TikTok: tendencias adaptadas a tu marca, hooks que enganchen en los primeros 3 segundos.</span>
+        </li>
+        <li class="sp-list-item">
+          <span class="sp-list-num">03</span>
+          <span class="sp-list-title">Videos corporativos</span>
+          <span class="sp-list-desc">Presentación de empresa, cultura organizacional y videos institucionales para web o eventos.</span>
+        </li>
+        <li class="sp-list-item">
+          <span class="sp-list-num">04</span>
+          <span class="sp-list-title">Spots publicitarios</span>
+          <span class="sp-list-desc">Piezas de 15 a 30 segundos para Meta Ads, YouTube Ads y campañas de medios pagados.</span>
+        </li>
+        <li class="sp-list-item">
+          <span class="sp-list-num">05</span>
+          <span class="sp-list-title">Testimoniales</span>
+          <span class="sp-list-desc">Grabación y edición de testimonios de clientes con dirección de cámara y postproducción completa.</span>
+        </li>
+        <li class="sp-list-item">
+          <span class="sp-list-num">06</span>
+          <span class="sp-list-title">Motion graphics</span>
+          <span class="sp-list-desc">Animación de logotipos, infografías animadas y texto en movimiento para contenido de marca.</span>
+        </li>
+      </ul>
+    </section>
 
-  <div class="srv-section-full">
-    <div class="inner">
-      <p class="section-eyebrow">Flujo de trabajo</p>
-      <h2 class="section-title">Del concepto a la<br/><span class="fire">pantalla en tiempo récord.</span></h2>
-      <div class="process-steps">
-        <div class="step"><h3>Brief creativo</h3><p>Definimos objetivo, audiencia, tono y plataforma destino. Con eso construimos el concepto creativo y el guion — antes de reservar un solo día de rodaje.</p></div>
-        <div class="step"><h3>Pre-producción</h3><p>Storyboard, locaciones, casting si aplica, lista de equipos y cronograma de grabación. Llegamos al set con todo resuelto para no perder tiempo ni plata.</p></div>
-        <div class="step"><h3>Producción</h3><p>Grabación con equipo propio: cámaras 4K, lentes, iluminación y audio profesional. Un equipo técnico y creativo en un solo bloque de trabajo.</p></div>
-        <div class="step"><h3>Post-producción</h3><p>Edición, color grading, sonorización y motion graphics. Te enviamos un corte para aprobación y entregamos el producto final en los formatos que necesitas.</p></div>
+    <!-- STATS -->
+    <section class="sp-stats">
+      <div class="sp-stats-grid">
+        <div class="sp-stat">
+          <div class="sp-stat-num">+200</div>
+          <div class="sp-stat-label">Videos producidos</div>
+        </div>
+        <div class="sp-stat">
+          <div class="sp-stat-num">4K</div>
+          <div class="sp-stat-label">Resolución de grabación</div>
+        </div>
+        <div class="sp-stat">
+          <div class="sp-stat-num">48h</div>
+          <div class="sp-stat-label">Entrega express disponible</div>
+        </div>
+        <div class="sp-stat">
+          <div class="sp-stat-num">10M+</div>
+          <div class="sp-stat-label">Views generados</div>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="srv-section">
-    <p class="section-eyebrow">Preguntas frecuentes</p>
-    <h2 class="section-title">Todo lo que necesitas<br/><span class="fire">saber antes de llamar.</span></h2>
-    <div class="faq-list">
-      <details class="faq-item"><summary>¿Cuánto cuesta producir un video en Lima?</summary><div class="faq-body">Un pack de reels mensuales para redes puede empezar desde $400 USD. Un spot publicitario con producción completa entre $1,500 y $6,000 según complejidad, locaciones y días de rodaje. Contáctanos con tu brief y te cotizamos al detalle.</div></details>
-      <details class="faq-item"><summary>¿Tienen estudio propio o solo van a locación?</summary><div class="faq-body">Trabajamos en ambas modalidades. Tenemos set propio para productos y testimoniales, y vamos a locación para eventos, restaurantes, tiendas y cualquier espacio que le dé contexto a tu marca. La decisión depende del concepto creativo.</div></details>
-      <details class="faq-item"><summary>¿Cuánto tiempo toma entregar los videos?</summary><div class="faq-body">Reels y contenido para redes: 48–72 horas desde la grabación. Spots y videos corporativos: 5–10 días hábiles según la complejidad de la post-producción. Proyectos con urgencia tienen tarifa diferenciada.</div></details>
-      <details class="faq-item"><summary>¿El video incluye música y subtítulos?</summary><div class="faq-body">Sí. Todos nuestros videos incluyen música con licencia libre de derechos, y si el video lo requiere, subtítulos optimizados para reproducción sin sonido — que es como más del 60% de las personas consume contenido en redes.</div></details>
-    </div>
-  </div>
+    <!-- PROCESS -->
+    <section class="sp-process">
+      <p class="sp-section-label">Cómo trabajamos</p>
+      <h2 class="sp-h2">Sin onboardings eternos.<br><strong>Rápido, claro y funcional.</strong></h2>
+      <div class="sp-process-grid">
+        <div class="sp-step">
+          <div class="sp-step-num">01</div>
+          <div class="sp-step-title">Brief creativo</div>
+          <div class="sp-step-desc">Definimos el objetivo del video, el tono, la plataforma destino, el guión y el plan de rodaje.</div>
+        </div>
+        <div class="sp-step">
+          <div class="sp-step-num">02</div>
+          <div class="sp-step-title">Producción</div>
+          <div class="sp-step-desc">Grabación con equipo profesional en locación o estudio. Dirección de cámara, iluminación y sonido.</div>
+        </div>
+        <div class="sp-step">
+          <div class="sp-step-num">03</div>
+          <div class="sp-step-title">Postproducción y entrega</div>
+          <div class="sp-step-desc">Edición, colorización, audio mix, subtítulos y entrega en los formatos y resoluciones que necesitas.</div>
+        </div>
+      </div>
+    </section>
 
-  <section class="cta-section">
-    <h2>Tu próximo video<br/><span class="fire">puede estar listo en 48h.</span></h2>
-    <p>Dinos qué necesitas producir y te armamos una propuesta hoy.</p>
-    <a href="https://wa.me/51900972068?text=Hola%20Flama%2C%20quiero%20cotizar%20producci%C3%B3n%20audiovisual" target="_blank" rel="noopener" class="btn-primary" style="margin:0 auto">Hablar con producción →</a>
-  </section>
+    <!-- CTA -->
+    <section class="sp-cta">
+      <p class="sp-cta-label">Próximo paso</p>
+      <h2 class="sp-cta-h">¿Todavía grabando con el celular en modo automático?</h2>
+      <p class="sp-cta-sub">Hablemos de qué tipo de contenido necesita tu marca para crecer en 2026.</p>
+      <a href="https://wa.me/51900972068?text=Hola%20Flama%2C%20quiero%20cotizar%20produccion%20audiovisual" target="_blank" rel="noopener" class="sp-btn-primary">Hablar con Flama →</a>
+    </section>
+
+  </div>
 </main>
 <section class="other-services">
   <div class="inner">
