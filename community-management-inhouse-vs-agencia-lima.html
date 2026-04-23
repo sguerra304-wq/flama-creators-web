@@ -148,6 +148,36 @@
       .article-wrap { padding: 28px 16px 60px; }
       .compare-grid { grid-template-columns: 1fr; }
     }
+  
+  /* ── MOBILE OPTIMIZATION ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-inner { padding: 0 16px; height: 56px; }
+    .nav-cta { font-size: 11px; padding: 8px 14px; }
+    .article-wrap { padding: 24px 16px 60px; }
+    .article-title { letter-spacing: -.3px; }
+    .article-intro { font-size: 16px; padding-left: 14px; }
+    .toc { padding: 16px 18px; margin-bottom: 32px; }
+    .toc a { font-size: 13px; }
+    h2.section-h { margin: 32px 0 12px; }
+    h3.sub-h { margin: 20px 0 8px; }
+    .highlight-box { padding: 14px 16px; }
+    .callout { padding: 16px 18px; }
+    .article-cta { padding: 28px 20px; border-radius: 12px; }
+    .article-cta p { font-size: 15px; }
+    .btn-fire { font-size: 12px; padding: 12px 22px; }
+    .wa-float { bottom: 16px; right: 16px; width: 46px; height: 46px; }
+    .breadcrumb { padding: 16px 16px 0; font-size: 12px; }
+    ul.article-list li { gap: 10px; }
+    footer { padding: 24px 16px; font-size: 12px; }
+  }
+  @media (max-width: 480px) {
+    .article-wrap { padding: 20px 14px 48px; }
+    .article-intro { font-size: 15px; }
+    .highlight-box, .callout { margin: 20px 0; }
+    .toc ol { padding-left: 14px; }
+  }
+
   </style>
 </head>
 <body>
