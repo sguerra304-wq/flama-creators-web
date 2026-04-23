@@ -3727,26 +3727,27 @@ document.querySelectorAll('[data-reveal],[data-stagger]').forEach(function(el){e
     }
     function autoLoadFirst(wrap){
       if(!wrap)return;
-      /* Load first 4 visible slides as iframes so all visible cards show content */
+      /* Load ALL slides in the category so every card shows Instagram content */
       var posters=wrap.querySelectorAll('.vp-slide:not(.loaded) .vp-poster');
-      var toLoad=Array.from(posters).slice(0,4);
-      toLoad.forEach(function(p,i){
-        setTimeout(function(){window.flamaLoad(p);},i*400);
+      Array.from(posters).forEach(function(p,i){
+        setTimeout(function(){window.flamaLoad(p);},i*350);
       });
     }
     /* On page ready */
     function init(){
       var active=document.querySelector('.vp-wrap.active');
       if(active){applyThumbs(active);autoLoadFirst(active);}
-      /* Apply thumbs to all on idle */
-      if('requestIdleCallback' in window){
-        requestIdleCallback(function(){
-          document.querySelectorAll('.vp-wrap:not(.active)').forEach(applyThumbs);
+      /* Preload all categories on idle — every tab shows content immediately */
+      function preloadAllCategories(){
+        document.querySelectorAll('.vp-wrap:not(.active)').forEach(function(wrap){
+          applyThumbs(wrap);
+          autoLoadFirst(wrap);
         });
+      }
+      if('requestIdleCallback' in window){
+        requestIdleCallback(preloadAllCategories, {timeout:5000});
       } else {
-        setTimeout(function(){
-          document.querySelectorAll('.vp-wrap:not(.active)').forEach(applyThumbs);
-        },2000);
+        setTimeout(preloadAllCategories, 3000);
       }
       /* Tab click: apply thumbs + auto-load first */
       document.querySelectorAll('.vp-tab').forEach(function(tab){
