@@ -3790,15 +3790,67 @@ document.querySelectorAll('[data-reveal],[data-stagger]').forEach(function(el){e
 
   window.flamaLoad=function(btn){
     var slide=btn.closest('.vp-slide');
+    if(!slide||slide.classList.contains('loaded'))return;
     var src=slide.dataset.embed;
     if(!src)return;
     var iframe=document.createElement('iframe');
     iframe.src=src;iframe.scrolling='no';
     iframe.setAttribute('allowtransparency','true');
     iframe.setAttribute('frameborder','0');
+    iframe.setAttribute('allow','autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share');
     slide.appendChild(iframe);
     slide.classList.add('loaded');
   };
+
+  /* Apply thumbnails + auto-load first slide per category */
+  (function(){
+    function applyThumbs(wrap){
+      wrap.querySelectorAll('.vp-slide').forEach(function(slide){
+        var thumb=slide.dataset.thumb;
+        var poster=slide.querySelector('.vp-poster');
+        if(thumb&&poster&&!slide.classList.contains('loaded')){
+          var img=new Image();
+          img.onload=function(){poster.style.backgroundImage='url('+thumb+')';};
+          img.onerror=function(){
+            poster.style.background='linear-gradient(160deg,#1a0a00 0%,#2d1200 50%,#0d0d0d 100%)';
+          };
+          img.src=thumb;
+        }
+      });
+    }
+    function autoLoadFirst(wrap){
+      if(!wrap)return;
+      var first=wrap.querySelector('.vp-slide:not(.loaded) .vp-poster');
+      if(first)window.flamaLoad(first);
+    }
+    /* On page ready */
+    function init(){
+      var active=document.querySelector('.vp-wrap.active');
+      if(active){applyThumbs(active);autoLoadFirst(active);}
+      /* Apply thumbs to all on idle */
+      if('requestIdleCallback' in window){
+        requestIdleCallback(function(){
+          document.querySelectorAll('.vp-wrap:not(.active)').forEach(applyThumbs);
+        });
+      } else {
+        setTimeout(function(){
+          document.querySelectorAll('.vp-wrap:not(.active)').forEach(applyThumbs);
+        },2000);
+      }
+      /* Tab click: apply thumbs + auto-load first */
+      document.querySelectorAll('.vp-tab').forEach(function(tab){
+        tab.addEventListener('click',function(){
+          setTimeout(function(){
+            var activeWrap=document.querySelector('.vp-wrap.active');
+            if(activeWrap){applyThumbs(activeWrap);autoLoadFirst(activeWrap);}
+          },150);
+        });
+      });
+    }
+    if(document.readyState==='loading'){
+      document.addEventListener('DOMContentLoaded',init);
+    }else{init();}
+  })();
 
   window.flamaSlide=function(cat,dir){
     var track=document.getElementById('track-'+cat);
@@ -4219,10 +4271,28 @@ $("[data-lenis-toggle]").on("click", function () {
   // ── Social proof toast ──────────────────────
   var toast = document.getElementById('flama-toast');
   var toasts = [
-    { name: 'Carlos M.', msg: 'acaba de pedir una propuesta', time: 'hace 4 minutos' },
-    { name: 'Andrea R.', msg: 'está viendo nuestro portafolio', time: 'ahora mismo' },
-    { name: 'Luis P.',   msg: 'nos escribió por redes sociales', time: 'hace 2 minutos' },
-    { name: 'Sofía G.', msg: 'acaba de cotizar diseño web', time: 'hace 6 minutos' },
+    { name: 'Carlos M.',    msg: 'acaba de pedir una propuesta',              time: 'hace 3 minutos' },
+    { name: 'Andrea R.',    msg: 'está viendo nuestro portafolio',             time: 'ahora mismo' },
+    { name: 'Diego F.',     msg: 'nos escribió por WhatsApp',                  time: 'hace 1 minuto' },
+    { name: 'Sofía G.',     msg: 'acaba de cotizar diseño web',                time: 'hace 5 minutos' },
+    { name: 'Valeria P.',   msg: 'está revisando nuestros servicios',          time: 'hace 2 minutos' },
+    { name: 'Rodrigo T.',   msg: 'pidió una propuesta de social media',        time: 'hace 7 minutos' },
+    { name: 'Camila N.',    msg: 'acaba de agendar una reunión',               time: 'ahora mismo' },
+    { name: 'Sebastián O.', msg: 'cotizó producción audiovisual',              time: 'hace 4 minutos' },
+    { name: 'Lucía V.',     msg: 'está viendo el portafolio de branding',      time: 'hace 2 minutos' },
+    { name: 'Mateo A.',     msg: 'nos escribió por redes sociales',            time: 'hace 6 minutos' },
+    { name: 'Daniela C.',   msg: 'acaba de descargar nuestra presentación',    time: 'hace 1 minuto' },
+    { name: 'Ignacio B.',   msg: 'pidió cotización de community management',   time: 'hace 9 minutos' },
+    { name: 'Fernanda Q.',  msg: 'está viendo casos de éxito',                 time: 'ahora mismo' },
+    { name: 'Ximena R.',    msg: 'acaba de pedir una propuesta de branding',   time: 'hace 3 minutos' },
+    { name: 'Tomás H.',     msg: 'cotizó pauta en Meta Ads',                   time: 'hace 5 minutos' },
+    { name: 'Adriana S.',   msg: 'nos contactó por diseño web',                time: 'hace 8 minutos' },
+    { name: 'Renato L.',    msg: 'está viendo nuestros precios',               time: 'ahora mismo' },
+    { name: 'Gabriela M.',  msg: 'pidió propuesta de social media Lima',       time: 'hace 2 minutos' },
+    { name: 'Javier E.',    msg: 'acaba de cotizar videos para TikTok',        time: 'hace 4 minutos' },
+    { name: 'Natalia K.',   msg: 'está comparando agencias en Lima',           time: 'hace 1 minuto' },
+    { name: 'Álvaro Z.',    msg: 'pidió una auditoría de sus redes sociales',  time: 'hace 6 minutos' },
+    { name: 'Pilar C.',     msg: 'acaba de agendar una demo',                  time: 'ahora mismo' },
   ];
   var toastIdx = 0;
   function showToast() {
