@@ -3380,10 +3380,11 @@ details[open] .faq-q::after{transform:translateY(-50%) rotate(45deg)}
 .blog-card-img {
   width:100%;
   aspect-ratio:16/9;
-  position:relative;
   overflow:hidden;
   background:#111;
 }
+.blog-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.blog-card:hover .blog-card-img img{transform:scale(1.04)}
 .blog-card-img::after {
   content:'';
   position:absolute;
@@ -3448,50 +3449,35 @@ details[open] .faq-q::after{transform:translateY(-50%) rotate(45deg)}
 
   <div class="blog-grid">
     <a href="/cuanto-cuesta-agencia-marketing-digital-lima.html" class="blog-card">
-      <div class="blog-card-img" style="padding:0;font-size:0">
-        <img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/689f964c187529203bdc68f7_DSC01779.avif" alt="Flama Creators — Guía" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"/>
-      </div>
+      <div class="blog-card-img">
+        <img src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=600&h=338&fit=crop" alt="Agencia de marketing digital Lima" loading="lazy"/>
       </div>
       <div class="blog-card-body">
         <span class="blog-tag">Guía</span>
         <h3 class="blog-title">Cómo elegir una agencia de marketing digital en Lima (sin equivocarte)</h3>
-        <p class="blog-desc">7 preguntas que debes hacer antes de firmar con una agencia, red flags y green flags que identifican a los buenos.</p>
+        <p class="blog-desc">7 preguntas que debes hacer antes de firmar con una agencia.</p>
         <span class="blog-arrow">Leer artículo →</span>
       </div>
     </a>
     <a href="/como-elegir-agencia-redes-sociales-lima.html" class="blog-card">
-      <div class="blog-card-img" style="padding:0;font-size:0">
-        <img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/68f2a2bf7c583a5c61015f17_DSC04257.avif" alt="Flama Creators — Estrategia" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"/>
-      </div>
+      <div class="blog-card-img">
+        <img src="https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=600&h=338&fit=crop" alt="Agencia de redes sociales Lima" loading="lazy"/>
       </div>
       <div class="blog-card-body">
         <span class="blog-tag">Estrategia</span>
         <h3 class="blog-title">Cómo elegir la mejor agencia de redes sociales en Lima</h3>
-        <p class="blog-desc">Criterios clave para seleccionar la agencia que realmente impulse tus redes y no solo suba fotos.</p>
+        <p class="blog-desc">Criterios clave para seleccionar la agencia que realmente impulse tus redes.</p>
         <span class="blog-arrow">Leer artículo →</span>
       </div>
     </a>
     <a href="/community-management-inhouse-vs-agencia-lima.html" class="blog-card">
-      <div class="blog-card-img" style="padding:0;font-size:0">
-        <img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/695bebcc20427ddb2d05ef00_DSC06946%20(1).avif" alt="Flama Creators — Decisión" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"/>
-      </div>
+      <div class="blog-card-img">
+        <img src="https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=600&h=338&fit=crop" alt="Community management Lima" loading="lazy"/>
       </div>
       <div class="blog-card-body">
         <span class="blog-tag">Decisión</span>
-        <h3 class="blog-title">Community Management: ¿In-house o agencia? La guía definitiva para Lima</h3>
-        <p class="blog-desc">Cuándo conviene tener un equipo interno y cuándo vale más externalizar tu community management.</p>
-        <span class="blog-arrow">Leer artículo →</span>
-      </div>
-    </a>
-      <a href="/instagram-para-empresas-lima.html" class="blog-card">
-      <div class="blog-card-img" style="padding:0;font-size:0">
-        <img src="https://cdn.prod.website-files.com/6847525e1086a65748478e1f/68f2a2bf7542aee01239204b_DSC04577.avif" alt="Flama Creators — Orgánico" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"/>
-      </div>
-      </div>
-      <div class="blog-card-body">
-        <span class="blog-tag">Orgánico</span>
-        <h3 class="blog-title">Instagram para empresas en Lima: cómo crecer orgánico en 2026</h3>
-        <p class="blog-desc">Algoritmo, tipos de contenido, horarios y errores que el 90% de marcas limeñas comete.</p>
+        <h3 class="blog-title">Community Management: ¿In-house o agencia? La guía definitiva</h3>
+        <p class="blog-desc">Cuándo conviene tener un equipo interno y cuándo vale más externalizar.</p>
         <span class="blog-arrow">Leer artículo →</span>
       </div>
     </a>
@@ -3728,8 +3714,12 @@ document.querySelectorAll('[data-reveal],[data-stagger]').forEach(function(el){e
     }
     function autoLoadFirst(wrap){
       if(!wrap)return;
-      var first=wrap.querySelector('.vp-slide:not(.loaded) .vp-poster');
-      if(first)window.flamaLoad(first);
+      /* Load first 4 visible slides as iframes so all visible cards show content */
+      var posters=wrap.querySelectorAll('.vp-slide:not(.loaded) .vp-poster');
+      var toLoad=Array.from(posters).slice(0,4);
+      toLoad.forEach(function(p,i){
+        setTimeout(function(){window.flamaLoad(p);},i*400);
+      });
     }
     /* On page ready */
     function init(){
