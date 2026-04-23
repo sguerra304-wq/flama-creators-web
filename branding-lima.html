@@ -219,96 +219,301 @@ footer.flama-footer{background:#0D0D0D;border-top:1px solid var(--c-border);padd
   </div>
 </header>
 <main>
-  <div class="srv-hero" data-reveal>
-    <p class="srv-hero-eyebrow">✦ Branding</p>
-    <h1>Las marcas que la gente<br/>recuerda no tuvieron<br/><span class="fire">suerte. Tuvieron estrategia.</span></h1>
-    <p>Creamos identidades de marca que van más allá de un logo bonito: definen cómo tu empresa se ve, habla y se diferencia en Lima y en cualquier mercado. Branding que convierte en negocio.</p>
-    <div class="srv-hero-btns">
-      <a href="https://wa.me/51900972068?text=Hola%20Flama%2C%20quiero%20cotizar%20branding%20para%20mi%20marca" target="_blank" rel="noopener" class="btn-primary">Empezar mi marca →</a>
-      <a href="/#portafolio" class="btn-outline">Ver identidades creadas</a>
-    </div>
-  </div>
 
-  <div class="srv-section-full">
-    <div class="inner">
-      <p class="section-eyebrow">Qué construimos</p>
-      <h2 class="section-title">Tu marca,<br/><span class="fire">inconfundible.</span></h2>
-      <p class="section-sub">No diseñamos logos sueltos. Construimos sistemas de identidad: cada elemento pensado para trabajar junto y comunicar lo mismo en todos los canales.</p>
-      <div class="inc-grid">
-        <div class="inc-card">
-          <div class="inc-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-          <h3>Diseño de logotipo</h3>
-          <p>Concepto, bocetos y versiones finales en todos los formatos. Isotipo, logotipo, imagotipo — lo que mejor represente tu marca en cualquier tamaño y fondo.</p>
+<style id="srv-premium">
+/* ── RESET & BASE ─── */
+.srv-wrap { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+@media(max-width:600px){ .srv-wrap { padding: 0 20px; } }
+
+/* ── HERO ─── */
+.sp-hero {
+  padding: 80px 0 72px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.sp-hero-inner {
+  display: grid; grid-template-columns: 1fr 420px; gap: 48px; align-items: center;
+}
+.sp-eyebrow {
+  font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.35);
+  margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+}
+.sp-eyebrow::before {
+  content:''; width: 24px; height: 1px; background: rgba(255,255,255,.2);
+}
+.sp-h1 {
+  font-family: Montserrat, sans-serif; font-weight: 900;
+  font-size: clamp(34px, 4.5vw, 54px); color: #fff;
+  line-height: 1.08; letter-spacing: -.5px; margin: 0 0 24px;
+}
+.sp-h1 em { font-style: normal; color: rgba(255,255,255,.35); }
+.sp-lead {
+  font-family: 'DM Sans', sans-serif; font-size: 16px;
+  color: rgba(255,255,255,.5); line-height: 1.75; max-width: 480px; margin: 0 0 32px;
+}
+.sp-btns { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.sp-btn-primary {
+  font-family: Montserrat, sans-serif; font-size: 12px; font-weight: 800;
+  letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;
+  color: #0D0D0D; background: #fff; padding: 13px 24px; border-radius: 100px;
+  transition: background .2s, color .2s;
+}
+.sp-btn-primary:hover { background: rgba(255,255,255,.85); }
+.sp-btn-ghost {
+  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+  text-decoration: none; color: rgba(255,255,255,.5);
+  border-bottom: 1px solid rgba(255,255,255,.2); padding-bottom: 2px;
+  transition: color .2s, border-color .2s;
+}
+.sp-btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,.6); }
+
+/* Hero photo */
+.sp-hero-img {
+  border-radius: 16px; overflow: hidden; aspect-ratio: 4/3;
+  background: #111; border: 1px solid rgba(255,255,255,.07);
+  position: relative;
+}
+.sp-hero-img img { width:100%; height:100%; object-fit:cover; display:block; }
+.sp-hero-img-placeholder {
+  width:100%; height:100%; min-height:300px;
+  background: linear-gradient(160deg,#1a1a1a 0%,#111 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+
+@media(max-width:860px){
+  .sp-hero-inner { grid-template-columns:1fr; }
+  .sp-hero-img { display: none; }
+}
+
+/* ── INCLUDES LIST ─── */
+.sp-includes { padding: 72px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+.sp-section-label {
+  font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500;
+  letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.3);
+  margin-bottom: 32px;
+}
+.sp-h2 {
+  font-family: Montserrat, sans-serif; font-weight: 900;
+  font-size: clamp(26px, 3.5vw, 40px); color: #fff;
+  line-height: 1.1; letter-spacing: -.4px; margin: 0 0 48px;
+}
+.sp-h2 strong { color: rgba(255,255,255,.3); font-weight: 900; }
+
+/* Numbered list */
+.sp-list { list-style: none; padding: 0; margin: 0; }
+.sp-list-item {
+  display: grid; grid-template-columns: 48px 1fr 1fr;
+  gap: 0 32px; padding: 28px 0;
+  border-top: 1px solid rgba(255,255,255,.06);
+  align-items: start;
+}
+.sp-list-item:last-child { border-bottom: 1px solid rgba(255,255,255,.06); }
+.sp-list-num {
+  font-family: Montserrat, sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: 1px; color: rgba(255,255,255,.2); padding-top: 3px;
+}
+.sp-list-title {
+  font-family: Montserrat, sans-serif; font-size: 16px; font-weight: 700;
+  color: rgba(255,255,255,.85); letter-spacing: -.1px;
+}
+.sp-list-desc {
+  font-family: 'DM Sans', sans-serif; font-size: 14px;
+  color: rgba(255,255,255,.4); line-height: 1.65;
+}
+@media(max-width:700px){
+  .sp-list-item { grid-template-columns: 36px 1fr; }
+  .sp-list-desc { grid-column: 2; margin-top: 6px; }
+}
+
+/* ── STATS ─── */
+.sp-stats { padding: 64px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+.sp-stats-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.sp-stat {
+  padding: 0 32px;
+  border-right: 1px solid rgba(255,255,255,.06);
+}
+.sp-stat:first-child { padding-left: 0; }
+.sp-stat:last-child { border-right: none; padding-right: 0; }
+.sp-stat-num {
+  font-family: Montserrat, sans-serif; font-weight: 900;
+  font-size: clamp(36px, 4vw, 52px); color: #fff;
+  line-height: 1; letter-spacing: -1px; margin-bottom: 8px;
+}
+.sp-stat-label {
+  font-family: 'DM Sans', sans-serif; font-size: 13px;
+  color: rgba(255,255,255,.4); line-height: 1.5;
+}
+@media(max-width:700px){
+  .sp-stats-grid { grid-template-columns: 1fr 1fr; gap: 32px 0; }
+  .sp-stat { border-right: none; padding: 0; }
+}
+
+/* ── PROCESS ─── */
+.sp-process { padding: 72px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+.sp-process-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: rgba(255,255,255,.05); border-radius: 16px; overflow: hidden;
+  margin-top: 40px;
+}
+.sp-step {
+  background: #0D0D0D; padding: 36px 28px;
+  transition: background .25s;
+}
+.sp-step:hover { background: #111; }
+.sp-step-num {
+  font-family: Montserrat, sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; color: rgba(255,255,255,.2); margin-bottom: 16px;
+}
+.sp-step-title {
+  font-family: Montserrat, sans-serif; font-size: 17px; font-weight: 800;
+  color: rgba(255,255,255,.85); margin-bottom: 10px; line-height: 1.2;
+}
+.sp-step-desc {
+  font-family: 'DM Sans', sans-serif; font-size: 14px;
+  color: rgba(255,255,255,.4); line-height: 1.65;
+}
+@media(max-width:700px){
+  .sp-process-grid { grid-template-columns: 1fr; }
+}
+
+/* ── CTA ─── */
+.sp-cta {
+  padding: 80px 0; text-align: center;
+}
+.sp-cta-label {
+  font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
+  letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.25);
+  margin-bottom: 20px;
+}
+.sp-cta-h {
+  font-family: Montserrat, sans-serif; font-weight: 900;
+  font-size: clamp(28px, 4vw, 44px); color: #fff;
+  line-height: 1.1; letter-spacing: -.4px; margin-bottom: 16px;
+}
+.sp-cta-sub {
+  font-family: 'DM Sans', sans-serif; font-size: 16px;
+  color: rgba(255,255,255,.4); margin-bottom: 36px;
+}
+</style>
+
+  <div class="srv-wrap">
+
+    <!-- HERO -->
+    <section class="sp-hero">
+      <div class="sp-hero-inner">
+        <div>
+          <p class="sp-eyebrow">Servicio · Branding</p>
+          <h1 class="sp-h1">Las marcas que la gente<br><em>elige sin pensarlo.</em></h1>
+          <p class="sp-lead">El branding no es tener un logo bonito. Es la razón por la que alguien elige tu marca sobre la del vecino. Construimos identidades visuales que se ven premium, se sienten coherentes y generan confianza.</p>
+          <div class="sp-btns">
+            <a href="https://wa.me/51900972068?text=Hola%20Flama%2C%20quiero%20cotizar%20branding" target="_blank" rel="noopener" class="sp-btn-primary">Cotizar ahora →</a>
+            <a href="/#portafolio" class="sp-btn-ghost">Ver portafolio</a>
+          </div>
         </div>
-        <div class="inc-card">
-          <div class="inc-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1.5" fill="currentColor"/><circle cx="17.5" cy="10.5" r="1.5" fill="currentColor"/><circle cx="8.5" cy="7.5" r="1.5" fill="currentColor"/><circle cx="6.5" cy="12.5" r="1.5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></div>
-          <h3>Paleta de colores</h3>
-          <p>Selección de colores primarios y secundarios con fundamento psicológico y diferenciador respecto a tu competencia. Con códigos HEX, RGB y CMYK para uso digital e impresión.</p>
-        </div>
-        <div class="inc-card">
-          <div class="inc-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg></div>
-          <h3>Tipografías</h3>
-          <p>Sistema tipográfico para títulos, cuerpo de texto y acento. Definición de uso en digital, impresión y redes — para que tu marca sea reconocible hasta sin el logo.</p>
-        </div>
-        <div class="inc-card">
-          <div class="inc-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
-          <h3>Manual de marca</h3>
-          <p>Documento completo con todas las reglas de uso de la identidad: usos correctos e incorrectos, versiones del logo, fondos permitidos y aplicaciones en medios. Para que tu marca siempre se vea igual.</p>
-        </div>
-        <div class="inc-card">
-          <div class="inc-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-          <h3>Tono de voz</h3>
-          <p>Cómo habla tu marca: formal o cercana, directa o inspiracional, con o sin humor. Definido con ejemplos reales para que cualquier persona que comunique por tu empresa lo haga de forma consistente.</p>
-        </div>
-        <div class="inc-card">
-          <div class="inc-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-          <h3>Aplicaciones de marca</h3>
-          <p>Mockups de cómo se ve tu identidad en tarjetas de presentación, packaging, redes sociales, indumentaria y otros puntos de contacto — para que veas el resultado antes de imprimir nada.</p>
+        <div class="sp-hero-img">
+          <div class="sp-hero-img-placeholder" style="background:linear-gradient(160deg,#0a050a 0%,#140a14 50%,#0d0d0d 100%)">
+            <!-- imagen del portafolio aquí -->
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="srv-section">
-    <p class="section-eyebrow">Nuestro track record</p>
-    <h2 class="section-title">Marcas construidas<br/><span class="fire">para durar.</span></h2>
-    <div class="stats-row">
-      <div class="stat-item"><div class="stat-num">+40</div><div class="stat-label">Identidades de<br/>marca creadas</div></div>
-      <div class="stat-item"><div class="stat-num">5+</div><div class="stat-label">Años de experiencia<br/>en branding en Lima</div></div>
-      <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Entregamos<br/>manual de marca</div></div>
-      <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Rondas de revisión<br/>incluidas en el precio</div></div>
-    </div>
-  </div>
+    <!-- INCLUDES -->
+    <section class="sp-includes">
+      <p class="sp-section-label">Lo que incluye</p>
+      <h2 class="sp-h2">Identidad completa, no solo un logotipo.</h2>
+      <p style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(255,255,255,.4);margin-bottom:40px;max-width:560px;line-height:1.7">Entregamos un sistema de marca completo que funciona en todos los formatos: digital, impreso, redes y packaging.</p>
+      <ul class="sp-list">
+        <li class="sp-list-item">
+          <span class="sp-list-num">01</span>
+          <span class="sp-list-title">Estrategia de marca</span>
+          <span class="sp-list-desc">Propósito, posicionamiento, personalidad, valores y territorio visual. La base antes de cualquier diseño.</span>
+        </li>
+        <li class="sp-list-item">
+          <span class="sp-list-num">02</span>
+          <span class="sp-list-title">Diseño de logotipo</span>
+          <span class="sp-list-desc">Primaria, versiones secundarias, isotipo y variantes de color. Entrega en vectores para todos los formatos.</span>
+        </li>
+        <li class="sp-list-item">
+          <span class="sp-list-num">03</span>
+          <span class="sp-list-title">Paleta de colores</span>
+          <span class="sp-list-desc">Sistema de colores primarios y secundarios con códigos HEX, RGB y CMYK para uso digital e impreso.</span>
+        </li>
+        <li class="sp-list-item">
+          <span class="sp-list-num">04</span>
+          <span class="sp-list-title">Tipografía</span>
+          <span class="sp-list-desc">Selección y combinación de tipografías que reflejan la personalidad de tu marca. Con guías de uso.</span>
+        </li>
+        <li class="sp-list-item">
+          <span class="sp-list-num">05</span>
+          <span class="sp-list-title">Manual de marca</span>
+          <span class="sp-list-desc">Documento completo con normas de uso, aplicaciones permitidas y prohibidas, y ejemplos reales.</span>
+        </li>
+        <li class="sp-list-item">
+          <span class="sp-list-num">06</span>
+          <span class="sp-list-title">Kit de aplicaciones</span>
+          <span class="sp-list-desc">Mockups de tarjetas, papelería, packaging, redes sociales y presentaciones con tu nueva identidad.</span>
+        </li>
+      </ul>
+    </section>
 
-  <div class="srv-section-full">
-    <div class="inner">
-      <p class="section-eyebrow">Proceso de diseño</p>
-      <h2 class="section-title">De la idea a la<br/><span class="fire">identidad en 4 pasos.</span></h2>
-      <div class="process-steps">
-        <div class="step"><h3>Descubrimiento</h3><p>Briefing profundo sobre tu negocio, competencia, audiencia y aspiraciones de marca. Investigación del mercado y benchmarking de categoría para diferenciarte, no para copiarte.</p></div>
-        <div class="step"><h3>Concepto creativo</h3><p>Presentamos 3 direcciones de identidad distintas: nombre si aplica, concepto visual y razonamiento estratégico. Aquí empiezas a ver hacia dónde va tu marca.</p></div>
-        <div class="step"><h3>Desarrollo</h3><p>Con la dirección elegida, desarrollamos el sistema completo: logo en todas sus versiones, colores, tipografías, patrones e iconografía. Hasta 3 rondas de ajustes incluidas.</p></div>
-        <div class="step"><h3>Entrega y lanzamiento</h3><p>Archivos finales en todos los formatos (AI, SVG, PNG, PDF) + manual de marca completo + asesoría en cómo implementar la identidad en tus canales digitales y físicos.</p></div>
+    <!-- STATS -->
+    <section class="sp-stats">
+      <div class="sp-stats-grid">
+        <div class="sp-stat">
+          <div class="sp-stat-num">+80</div>
+          <div class="sp-stat-label">Marcas creadas</div>
+        </div>
+        <div class="sp-stat">
+          <div class="sp-stat-num">3</div>
+          <div class="sp-stat-label">Semanas de entrega</div>
+        </div>
+        <div class="sp-stat">
+          <div class="sp-stat-num">100%</div>
+          <div class="sp-stat-label">Vectores editables</div>
+        </div>
+        <div class="sp-stat">
+          <div class="sp-stat-num">2</div>
+          <div class="sp-stat-label">Rondas de revisión</div>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="srv-section">
-    <p class="section-eyebrow">Preguntas frecuentes</p>
-    <h2 class="section-title">Dudas comunes antes<br/><span class="fire">de comenzar.</span></h2>
-    <div class="faq-list">
-      <details class="faq-item"><summary>¿Cuánto cuesta hacer el branding de una marca en Lima?</summary><div class="faq-body">Un proyecto de branding básico (logo + paleta + tipografías) puede estar desde $600 USD. Un branding completo con manual de marca y aplicaciones desde $1,500 USD. El precio final depende de la complejidad del proyecto y los entregables requeridos. Te cotizamos sin compromiso.</div></details>
-      <details class="faq-item"><summary>¿También hacen naming (nombre de marca)?</summary><div class="faq-body">Sí. El naming es parte de nuestro proceso de branding cuando el cliente lo necesita. Incluye generación de opciones, verificación de disponibilidad de dominio y redes, y evaluación fonética para el mercado peruano y latinoamericano.</div></details>
-      <details class="faq-item"><summary>¿Cuánto tiempo toma un proyecto de branding?</summary><div class="faq-body">Un branding completo toma entre 3 y 6 semanas desde el brief inicial hasta la entrega final, dependiendo de la velocidad de respuesta del cliente en las revisiones. No aceleramos el proceso a costa de la calidad — una marca se construye para durar años.</div></details>
-      <details class="faq-item"><summary>¿Recibo los archivos editables?</summary><div class="faq-body">Sí. Entregamos todos los archivos fuente en Adobe Illustrator, además de versiones exportadas en PNG, SVG y PDF en todos los tamaños y fondos. Los archivos son tuyos, sin restricciones.</div></details>
-    </div>
-  </div>
+    <!-- PROCESS -->
+    <section class="sp-process">
+      <p class="sp-section-label">Cómo trabajamos</p>
+      <h2 class="sp-h2">Sin onboardings eternos.<br><strong>Rápido, claro y funcional.</strong></h2>
+      <div class="sp-process-grid">
+        <div class="sp-step">
+          <div class="sp-step-num">01</div>
+          <div class="sp-step-title">Estrategia y brief</div>
+          <div class="sp-step-desc">Exploramos tu marca, mercado y competencia. Definimos el posicionamiento y la dirección creativa.</div>
+        </div>
+        <div class="sp-step">
+          <div class="sp-step-num">02</div>
+          <div class="sp-step-title">Exploración visual</div>
+          <div class="sp-step-desc">Presentamos 2–3 direcciones de concepto con moodboard, paleta y tipografía. Elegimos juntos.</div>
+        </div>
+        <div class="sp-step">
+          <div class="sp-step-num">03</div>
+          <div class="sp-step-title">Desarrollo y entrega</div>
+          <div class="sp-step-desc">Diseño final, manual de marca completo y kit de archivos en todos los formatos que necesitas.</div>
+        </div>
+      </div>
+    </section>
 
-  <section class="cta-section">
-    <h2>Tu marca merece<br/><span class="fire">ser recordada.</span></h2>
-    <p>Cuéntanos tu proyecto. Primeras 15 minutos de consultoría sin costo.</p>
-    <a href="https://wa.me/51900972068?text=Hola%20Flama%2C%20quiero%20cotizar%20branding%20para%20mi%20marca" target="_blank" rel="noopener" class="btn-primary" style="margin:0 auto">Crear mi identidad →</a>
-  </section>
+    <!-- CTA -->
+    <section class="sp-cta">
+      <p class="sp-cta-label">Próximo paso</p>
+      <h2 class="sp-cta-h">¿Tu marca actual te da vergüenza mostrarla?</h2>
+      <p class="sp-cta-sub">Es hora de tener una identidad que esté a la altura de tu negocio.</p>
+      <a href="https://wa.me/51900972068?text=Hola%20Flama%2C%20quiero%20cotizar%20branding" target="_blank" rel="noopener" class="sp-btn-primary">Hablar con Flama →</a>
+    </section>
+
+  </div>
 </main>
 <section class="other-services">
   <div class="inner">
